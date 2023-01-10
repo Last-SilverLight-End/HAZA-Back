@@ -1,11 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3951a548-d9cb-4c94-9c35-10c1ab4493ab" name="변경" comment="" />
+    <list default="true" id="3951a548-d9cb-4c94-9c35-10c1ab4493ab" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/model/Genre_BulletinBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/model/Genre_MainCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/model/Genre_MidCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/model/Survey_Element.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/HAZA.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,9 +60,22 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="HazaCommunityApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="HAZACommunity.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="HAZAGroup.HAZACommunity.HazaCommunityApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -35,6 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1673015820286</updated>
       <workItem from="1673015822020" duration="12000" />
+      <workItem from="1673260264182" duration="5289000" />
     </task>
     <servers />
   </component>
