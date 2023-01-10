@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,11 +20,14 @@ public class User {
     @Column(name ="User_ID")
     private int id;
 
-    @Column(nullable = false,length = 200)
+    @Column(name = "User_Email",nullable = false,length = 200)
     private String Email;
     @Column(nullable = false , length = 200)
     private String Name;
     @Convert// 나중에 여기에 컨버터 클래스 넣기
     private boolean IsAdmin;
+
+    @OneToMany(mappedBy= "member")
+    private List<Genre_BulletinBoard> Bulletins = new ArrayList<Genre_BulletinBoard>();
 
 }
