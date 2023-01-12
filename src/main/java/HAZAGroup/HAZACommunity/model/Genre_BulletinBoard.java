@@ -18,7 +18,9 @@ public class Genre_BulletinBoard {
     private int Id;
     private int MainCategory_Id;
     private int MidCategory_Id;
-    private String UserEmail;
+    @ManyToOne
+    @JoinColumn(name = "User_Email")
+    private User UserEmail;
     private String Title;
     private String UserName;
     @Column(nullable = false, length = 50)
