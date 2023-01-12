@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="fileDownload">
-    <select id="getBoardlist" resultType="board">
+<mapper namespace="board">
+    <select id="getBoardList" resultMap="boardMap">
         SELECT
         BD.id AS ID
         ,BD.board_title AS TITLE
@@ -12,7 +12,7 @@
         FROM board BD order by BD.CREATED_DATE
     </select>
 
-    <resultMap id="board" type="HAZAGroup.HAZACommunity.board.dto.BoardDto">
+    <resultMap id="boardMap" type="HAZAGroup.HAZACommunity.board.dto.BoardDto">
         <result property="id" column="ID" />
         <result property="title" column="TITLE" />
         <result property="content" column="CONTENT" />
