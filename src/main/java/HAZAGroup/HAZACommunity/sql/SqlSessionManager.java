@@ -1,4 +1,4 @@
-package sql;
+package HAZAGroup.HAZACommunity.sql;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -17,7 +17,9 @@ public class SqlSessionManager {
         try {
             InputStream is = Resources.getResourceAsStream(RESOURCE);
             SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-            SqlSessionFactory factory = builder.build(is);
+
+            // 향후 분기처리 필요
+            SqlSessionFactory factory = builder.build(is , "development");
             sqlSession = factory.openSession(true);
             // openSession 이라는메소드는 세션을 가져오는 메소드
             // 세션을 생성하고 가져올때,
