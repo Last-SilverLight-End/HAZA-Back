@@ -12,7 +12,7 @@
         FROM board BD order by BD.CREATED_DATE
     </select>
 
-    <resultMap id="boardMap" type="HAZAGroup.HAZACommunity.board.dto.BoardDto">
+    <resultMap id="boardMap" type="HAZAGroup.HAZACommunity.rest.board.dto.BoardDto">
         <result property="id" column="ID" />
         <result property="title" column="TITLE" />
         <result property="content" column="CONTENT" />
