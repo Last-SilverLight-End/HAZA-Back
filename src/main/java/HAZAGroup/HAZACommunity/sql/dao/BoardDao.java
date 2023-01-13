@@ -1,6 +1,6 @@
 package HAZAGroup.HAZACommunity.sql.dao;
 
-import HAZAGroup.HAZACommunity.board.dto.BoardDto;
+import HAZAGroup.HAZACommunity.rest.board.dto.BoardDto;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;

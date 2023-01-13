@@ -1,6 +1,6 @@
-package HAZAGroup.HAZACommunity.board.service;
+package HAZAGroup.HAZACommunity.rest.board.service;
 
-import HAZAGroup.HAZACommunity.board.dto.BoardDto;
+import HAZAGroup.HAZACommunity.rest.board.dto.BoardDto;
 import HAZAGroup.HAZACommunity.sql.SqlSessionManager;
 import HAZAGroup.HAZACommunity.sql.dao.BoardDao;
 import org.apache.ibatis.session.SqlSession;
