@@ -1,4 +1,4 @@
-package sql;
+package HAZAGroup.HAZACommunity.sql;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -12,6 +12,7 @@ import java.io.InputStream;
 public class SqlSessionManager {
     public static final String RESOURCE = "sql/mybatis-config.xml";
     private static final Logger logger = LoggerFactory.getLogger(SqlSessionManager.class);
+
     public SqlSession getSqlSession() {
         SqlSession sqlSession = null;
         try {

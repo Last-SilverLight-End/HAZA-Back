@@ -14,9 +14,9 @@
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
                 <!--mysql server 생성 후 변경 필요-->
-                <property name="url" value="jdbc:mysql://host:port/dbname?characterEncoding=utf8"/>
-                <property name="username" value="mybatis"/>
-                <property name="password" value="mybatis"/>
+                <property name="url" value=""/>
+                <property name="username" value=""/>
+                <property name="password" value=""/>
             </dataSource>
         </environment>
 
@@ -24,7 +24,7 @@
 
     <!--    mapper.xml 경로-->
     <mappers>
-
+        <mapper resource="sql/mapper/board-mapper.xml"/>
     </mappers>
 
 
