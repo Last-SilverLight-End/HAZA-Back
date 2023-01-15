@@ -1,4 +1,4 @@
-package HAZAGroup.HAZACommunity.rest.board.vo;
+package HAZAGroup.HAZACommunity.rest.board.model;
 
 import lombok.AccessLevel;
 import lombok.Data;

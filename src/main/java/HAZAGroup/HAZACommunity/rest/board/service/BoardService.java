@@ -1,6 +1,6 @@
 package HAZAGroup.HAZACommunity.rest.board.service;
 
-import HAZAGroup.HAZACommunity.rest.board.dto.BoardDto;
+import HAZAGroup.HAZACommunity.rest.board.model.BoardVo;
 import HAZAGroup.HAZACommunity.sql.SqlSessionManager;
 import HAZAGroup.HAZACommunity.sql.dao.BoardDao;
 import org.apache.ibatis.session.SqlSession;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class BoardService {
     Logger logger = LoggerFactory.getLogger(BoardService.class);
 
-    public BoardDto getBoardSample(){
+    public BoardVo getBoardSample() throws Exception {
         try {
             BoardDao boardDao = new BoardDao();
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
@@ -22,7 +22,7 @@ public class BoardService {
         }catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
-            return null;
+            throw e;
         }
     }
 }

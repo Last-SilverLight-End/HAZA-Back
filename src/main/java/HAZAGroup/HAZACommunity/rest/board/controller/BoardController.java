@@ -3,7 +3,7 @@ package HAZAGroup.HAZACommunity.rest.board.controller;
 import HAZAGroup.HAZACommunity.common.response.model.BasicResponse;
 import HAZAGroup.HAZACommunity.common.response.model.CommonResponse;
 import HAZAGroup.HAZACommunity.common.response.model.ErrorResponse;
-import HAZAGroup.HAZACommunity.rest.board.dto.BoardDto;
+import HAZAGroup.HAZACommunity.rest.board.model.BoardVo;
 import HAZAGroup.HAZACommunity.rest.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,12 +18,12 @@ public class BoardController {
     private BoardService boardService;
 
     @GetMapping(produces = "application/json;charset=UTF-8")
-    public ResponseEntity<? extends BasicResponse> getDrawingInform() throws Exception {
+    public ResponseEntity<BasicResponse> getDrawingInform() throws Exception {
 
-        CommonResponse<BoardDto> commonResponse;
+        CommonResponse<BoardVo> commonResponse;
 
         try {
-            commonResponse = new CommonResponse<BoardDto>(boardService.getBoardSample());
+            commonResponse = new CommonResponse<BoardVo>(boardService.getBoardSample());
             commonResponse.setStatus(200);
 
             return ResponseEntity.ok().body(commonResponse);

@@ -1,5 +1,7 @@
-package HAZAGroup.HAZACommunity.rest.board.vo;
+package HAZAGroup.HAZACommunity.rest.board.model;
 
+import HAZAGroup.HAZACommunity.rest.oauth.model.ProviderType;
+import HAZAGroup.HAZACommunity.rest.oauth.model.RoleType;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
@@ -10,12 +12,15 @@ import org.springframework.stereotype.Component;
 @Setter(AccessLevel.PROTECTED)
 @Data
 @Component
-public class MemberVo {
+public class UserVo {
 
 
     private String id;
     private String name;
     private String email;
+    private RoleType roleType;
+    private ProviderType providerType;
 
-    private Boolean IsAdmin;
+
+
 }

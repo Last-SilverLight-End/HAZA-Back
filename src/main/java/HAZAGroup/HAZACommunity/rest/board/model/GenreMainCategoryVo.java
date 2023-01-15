@@ -1,4 +1,4 @@
-package HAZAGroup.HAZACommunity.rest.board.vo;
+package HAZAGroup.HAZACommunity.rest.board.model;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class GenreMainCategoryVo {
-    private String user_email;
     private int mainCategory_Id;
     private String Name;
 }
