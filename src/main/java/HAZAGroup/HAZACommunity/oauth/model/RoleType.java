@@ -1,4 +1,4 @@
-package HAZAGroup.HAZACommunity.rest.oauth.model;
+package HAZAGroup.HAZACommunity.oauth.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
