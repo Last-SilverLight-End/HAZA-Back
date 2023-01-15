@@ -1,7 +1,7 @@
 package HAZAGroup.HAZACommunity.rest.board.model;
 
-import HAZAGroup.HAZACommunity.rest.oauth.model.ProviderType;
-import HAZAGroup.HAZACommunity.rest.oauth.model.RoleType;
+import HAZAGroup.HAZACommunity.oauth.model.ProviderType;
+import HAZAGroup.HAZACommunity.oauth.model.RoleType;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
