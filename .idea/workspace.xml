@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3951a548-d9cb-4c94-9c35-10c1ab4493ab" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/rest/board/vo/GenreMainCategoryVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/rest/board/vo/GenreMidCategoryVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/rest/board/vo/MemberVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/sql/dao/MemberDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/model/Genre_BulletinBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/model/Genre_BulletinBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/model/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +33,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -47,6 +56,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/spring공부 및 예제/core",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -73,7 +83,9 @@
       <option name="presentableId" value="Default" />
       <updated>1673015820286</updated>
       <workItem from="1673015822020" duration="12000" />
-      <workItem from="1673333478366" duration="775000" />
+      <workItem from="1673333478366" duration="4579000" />
+      <workItem from="1673649035209" duration="655000" />
+      <workItem from="1673690224865" duration="10513000" />
     </task>
     <servers />
   </component>
