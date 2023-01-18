@@ -5,22 +5,24 @@
 #spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 
-
 spring:
   profiles.active: local
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: 
+    url:
     username:
-    password:
+    password: 
 
   # Security OAuth
   security:
     oauth2.client:
       registration:
         google:
-          clientId: 638736893171-6qr36je3jc1dilt8lqa05ijn53vm8nnl.apps.googleusercontent.com
-          clientSecret: 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
+          client-name: google
+          client-id:
+          client-secret:
+          redirect-uri: "{baseUrl}/oauth2/callback/{registrationId}"
+          authorization-grant-type: authorization_code
           scope:
             - email
             - profile
