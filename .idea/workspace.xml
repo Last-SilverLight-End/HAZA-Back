@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3951a548-d9cb-4c94-9c35-10c1ab4493ab" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/rest/board/vo/GenreMainCategoryVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/rest/board/vo/GenreMidCategoryVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/rest/board/vo/MemberVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/sql/dao/MemberDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/rest/board/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/rest/board/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/sql/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/mapper/user-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/common/response/model/BasicResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/common/response/model/BasicResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/rest/board/model/UserVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/rest/board/model/UserVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/HAZAGroup/HAZACommunity/sql/dao/MemberDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +58,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -91,5 +100,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

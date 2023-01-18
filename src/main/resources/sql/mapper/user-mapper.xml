@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="user">
+    <select id="getUserList" resultMap="userMap">
+        SELECT
+            USER.id AS ID
+            ,USER.user_email AS EMAIL
+            ,USER.name AS NAME,
+            FROM user USER order by USER.ID
+    </select>
+
+    <resultMap id="userMap" type="HAZAGroup.HAZACommunity.rest.board.model.UserVo">
+        <result property="id" column="USER_ID"/>
+        <result property="email" column="USER_EMAIL"/>
+        <result property="name" column="NAME"/>
+    </resultMap>
+</mapper>
