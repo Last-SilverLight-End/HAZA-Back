@@ -3,12 +3,14 @@
 <mapper namespace="user">
     <select id="getUserList" resultMap="userMap">
         SELECT
-            USER.id AS ID
-            ,USER.user_email AS EMAIL
-            ,USER.name AS NAME,
-            FROM user USER order by USER.ID
+            BD.id AS ID
+             ,BD.board_title AS TITLE
+             ,BD.board_content AS CONTENT
+             ,BD.board_hit AS HIT
+             ,BD.created_date AS CREATED_DATE
+             ,BD.modified_date AS MODIFIED_DATE
+        FROM user TB_USER order by TB_USER.EMAIL
     </select>
-
     <resultMap id="userMap" type="HAZAGroup.HAZACommunity.rest.board.model.UserVo">
         <result property="id" column="USER_ID"/>
         <result property="email" column="USER_EMAIL"/>

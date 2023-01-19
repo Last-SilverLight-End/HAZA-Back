@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="board">
-    <select id="getBoardList" resultMap="boardMap">
+<mapper namespace="HAZAGroup.HAZACommunity.rest.board.data.access.BoardMapper">
+    <select id="getBoardLists" resultMap="boardMap">
         SELECT
-        BD.id AS ID
-        ,BD.board_title AS TITLE
-        ,BD.board_content AS CONTENT
-        ,BD.board_hit AS HIT
-        ,BD.created_date AS CREATED_DATE
-        ,BD.modified_date AS MODIFIED_DATE
-        FROM board BD order by BD.CREATED_DATE
+        TB_BOARD.board_id AS 보드아이디
+        ,TB_BOARD.title AS 제목
+        ,TB_BOARD.content AS 내용
+        ,TB_BOARD.hit AS 조회수
+
+        ,TB_BOARD.created_date AS 생성일자
+        ,TB_BOARD.modified_date AS 수정일자
+
+        ,TB_BOARD.user_id AS 작성자아이디
+        ,TB_BOARD.user_name AS 작성자이름
+        ,TB_BOARD.user_email AS 작성자이메일
+
+        ,TB_BOARD.main_Category_Id AS 생성일자
+        ,TB_BOARD.mid_Category_Id AS 수정일자
+        FROM TB_BOARD order by TB_BOARD.created_date
     </select>
 
     <resultMap id="boardMap" type="HAZAGroup.HAZACommunity.rest.board.model.BoardVo">
-        <result property="id" column="ID" />
+        <id property="board_id" column="BOARD_ID"/>
         <result property="title" column="TITLE" />
         <result property="content" column="CONTENT" />
         <result property="hit" column="HIT" />
         <result property="created_date" column="CREATED_DATE" />
         <result property="modified_date" column="MODIFIED_DATE" />
+
+        <result property="user_id" column="USER_ID"/>
+        <result property="user_name" column="USER_NM" />
+        <result property="user_email" column="USER_EMAIL" />
+
+        <result property="main_Category_Id" column="B_MAIN_CATE_ID" />
+        <result property="mid_Category_Id" column="B_MID_CATE_ID" />
     </resultMap>
 
 </mapper>

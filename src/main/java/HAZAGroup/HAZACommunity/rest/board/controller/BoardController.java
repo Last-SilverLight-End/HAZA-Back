@@ -5,12 +5,14 @@ import HAZAGroup.HAZACommunity.common.response.model.CommonResponse;
 import HAZAGroup.HAZACommunity.common.response.model.ErrorResponse;
 import HAZAGroup.HAZACommunity.rest.board.model.BoardVo;
 import HAZAGroup.HAZACommunity.rest.board.service.BoardService;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Mapper
 @RequestMapping("/api/boards")
 public class BoardController {
 
@@ -23,7 +25,7 @@ public class BoardController {
         CommonResponse<BoardVo> commonResponse;
 
         try {
-            commonResponse = new CommonResponse<BoardVo>(boardService.getBoardSample());
+            commonResponse = new CommonResponse<BoardVo>(boardService.getBoardStatus());
             commonResponse.setStatus(200);
 
             return ResponseEntity.ok().body(commonResponse);
@@ -34,3 +36,5 @@ public class BoardController {
         }
     }
 }
+
+

@@ -15,9 +15,12 @@ public class UserVo {
     private String email;
     @NonNull
     private String name;
-    @NonNull
+
+
+    //api 호출 용도
     private String roleType;
-    @NonNull
+
+    // 로그인 용도
     private String providerType;
 
 
