@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class UserVo {
 
+    @NonNull
     private int id;
     @NonNull
     private String email;

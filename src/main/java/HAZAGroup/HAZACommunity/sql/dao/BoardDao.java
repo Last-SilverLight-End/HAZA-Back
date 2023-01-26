@@ -13,11 +13,11 @@ public class BoardDao {
 
     @Autowired
     private DataSource dataSource;
-    @Autowired
-    private SqlSession sqlSession;
 
-    public List<BoardVo> getBoardLists() throws Exception{
+
+    public List<BoardVo> getBoardLists(SqlSession sqlSession) throws Exception{
         List<BoardVo> BoardLists = sqlSession.selectList("board.getBoardLists");
         return BoardLists;
     }
+
 }
