@@ -1,7 +1,9 @@
 package HAZAGroup.HAZACommunity.rest.board.service;
 
 import HAZAGroup.HAZACommunity.rest.board.model.BoardVo;
+import HAZAGroup.HAZACommunity.sql.SqlSessionManager;
 import HAZAGroup.HAZACommunity.sql.dao.BoardDao;
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -12,17 +14,22 @@ import java.util.List;
 public class BoardService {
     Logger logger = LoggerFactory.getLogger(BoardService.class);
 
-    public BoardVo getBoardStatus() throws Exception {
+    public List<BoardVo> getBoardStatus() throws Exception {
+        SqlSession sqlSession = null;
         try {
-            //BoardVo boardVo = new BoardVo();
             BoardDao boardDao = new BoardDao();
-            List<BoardDao> boardLists;
-            // 이 부분을 다 불러와야 한다. 짜는중....
-            return boardDao.getBoardLists().get(1);
+            SqlSessionManager sqlSessionManager = new SqlSessionManager();
+            sqlSession = sqlSessionManager.getSqlSession();
+            
+            return boardDao.getBoardLists(sqlSession);
+
         }catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
+        }
+        finally {
+            sqlSession.close();
         }
     }
 }

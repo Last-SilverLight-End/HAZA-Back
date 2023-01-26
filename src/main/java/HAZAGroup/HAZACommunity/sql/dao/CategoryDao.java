@@ -1,0 +1,30 @@
+package HAZAGroup.HAZACommunity.sql.dao;
+
+import HAZAGroup.HAZACommunity.rest.board.model.BoardVo;
+import HAZAGroup.HAZACommunity.rest.board.model.GenreMainCategoryVo;
+import HAZAGroup.HAZACommunity.rest.board.model.GenreMidCategoryVo;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import javax.sql.DataSource;
+import java.util.List;
+
+@Repository
+public class CategoryDao {
+
+    @Autowired
+    private DataSource dataSource;
+
+    // MainCategoryBoard 조회
+    public List<GenreMainCategoryVo> getMainCategoryLists(SqlSession sqlSession) throws Exception {
+        List<GenreMainCategoryVo> MainCategoryLists = sqlSession.selectList("category.getMainCategoryLists");
+        return MainCategoryLists;
+    }
+    // MidCategoryBoard 조회
+    public List<GenreMidCategoryVo> getMidCategoryLists(SqlSession sqlSession) throws Exception{
+        List<GenreMidCategoryVo> MidCategoryLists = sqlSession.selectList("category.getMidCategoryLists");
+        return MidCategoryLists;
+    }
+
+}

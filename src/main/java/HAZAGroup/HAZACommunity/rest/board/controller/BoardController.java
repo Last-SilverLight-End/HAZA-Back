@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Mapper
 @RequestMapping("/api/boards")
@@ -22,19 +24,23 @@ public class BoardController {
     @GetMapping(produces = "application/json;charset=UTF-8")
     public ResponseEntity<BasicResponse> getDrawingInform() throws Exception {
 
-        CommonResponse<BoardVo> commonResponse;
+        CommonResponse<List<BoardVo>> commonResponse;
 
         try {
-            commonResponse = new CommonResponse<BoardVo>(boardService.getBoardStatus());
+            commonResponse = new CommonResponse<List<BoardVo>>(boardService.getBoardStatus());
             commonResponse.setStatus(200);
 
             return ResponseEntity.ok().body(commonResponse);
 
         }catch (Exception e){
             // 임시 예외처리 향후 Exception별로 구현 필요
-            return ResponseEntity.internalServerError().body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+            return ResponseEntity.internalServerError()
+                    .body(new ErrorResponse(
+                            "조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
+
+
 }
 
 

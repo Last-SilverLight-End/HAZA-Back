@@ -1,16 +1,16 @@
 package HAZAGroup.HAZACommunity.rest.board.model;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
-@Setter(AccessLevel.PROTECTED)
-@Data
-@Component
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class GenreMidCategoryVo {
-
+    @NonNull
     private int midCategory_Id;
+    @NonNull
     private int parentsCategory_Id;
+    @NonNull
     private String Name;
 }

@@ -7,6 +7,7 @@ build/
 !**/src/main
 ### STS ###
 .apt_generated
+.idea
 .classpath
 .factorypath
 .project

@@ -13,6 +13,7 @@ public class CommonResponse<T> extends BasicResponse {
     private T data;
 
 
+
     public CommonResponse(T data) {
         this.data = data;
         if(data instanceof List) {
