@@ -19,11 +19,12 @@
         <id property="mainCategory_Id" column="B_MAIN_CATE_ID"/>
         <result property="Name" column="MAIN_CATE_NAME" />
     </resultMap>
-
+    <!--여기 고쳐야 한다. Mapped Statements collection does not contain value for category.getMidCategoryLists -->
     <resultMap id="MidCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMidCategoryVo">
         <id property="midCategory_Id" column="B_MID_CATE_ID"/>
+
         <result property="Name" column="MID_CATE_NAME"/>
-        <result property="parentsCategory_Id" column="B_MAIN_CATE_ID" />
+        <result property="Name" column="MAIN_CATE_NAME" />
     </resultMap>
 
 </mapper>

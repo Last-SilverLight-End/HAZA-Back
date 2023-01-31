@@ -9,7 +9,7 @@
          ,TB_BOARD.BOARD_HIT AS BOARD_HIT
 
          ,TB_BOARD.CREATED_DATE AS CREATED_DATE
-         ,TB_BOARD.MODIFIY_DATE AS MODIFIY_DATE
+         ,TB_BOARD.MODIFIED_DATE AS MODIFIED_DATE
 
          ,TB_BOARD.USER_ID AS USER_ID
          ,TB_BOARD.USER_NM AS USER_NM
@@ -28,7 +28,7 @@
         <result property="content" column="BOARD_CONTENT" />
         <result property="hit" column="BOARD_HIT" />
         <result property="created_date" column="CREATED_DATE" />
-        <result property="modified_date" column="MODIFIY_DATE" />
+        <result property="modified_date" column="MODIFIED_DATE" />
 
         <result property="user_id" column="USER_ID"/>
         <result property="user_name" column="USER_NM" />
