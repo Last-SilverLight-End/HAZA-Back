@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class CategoryDao {
@@ -16,14 +17,18 @@ public class CategoryDao {
     @Autowired
     private DataSource dataSource;
 
+
+
+
     // MainCategoryBoard 조회
-    public List<GenreMainCategoryVo> getMainCategoryLists(SqlSession sqlSession) throws Exception {
+    public List<GenreMainCategoryVo> getMainCategoryLists( SqlSession sqlSession) throws Exception {
+
         List<GenreMainCategoryVo> MainCategoryLists = sqlSession.selectList("category.getMainCategoryLists");
         return MainCategoryLists;
     }
     // MidCategoryBoard 조회
-    public List<GenreMidCategoryVo> getMidCategoryLists(SqlSession sqlSession) throws Exception{
-        List<GenreMidCategoryVo> MidCategoryLists = sqlSession.selectList("category.getMidCategoryLists");
+    public List<GenreMidCategoryVo> getMidCategoryLists(Map<String, Object> map,SqlSession sqlSession) throws Exception{
+        List<GenreMidCategoryVo> MidCategoryLists = sqlSession.selectList("category.getMidCategoryLists",map);
         return MidCategoryLists;
     }
 
