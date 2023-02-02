@@ -30,6 +30,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    //http://localhost:8080/api/category?main=Movie&sub=Horror
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json;charset=UTF-8" )
 //    public ResponseEntity<BasicResponse> getAllGenres(HttpSession session, HttpServletRequest request, ModelMap modelMap) throws Exception{
 //        String requestUrl = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
@@ -37,11 +38,11 @@ public class CategoryController {
         public @ResponseBody
         ResponseEntity<BasicResponse> getAllGenres(@RequestParam String main,@RequestParam String sub) throws Exception{
         Map<String,Object> map = new HashMap<String,Object>();
+        main = "Movie"; sub = "Horror";
         map.put("main",main);
         map.put("sub",sub);
         CommonResponse<List<GenreMidCategoryVo>> commonResponse;
         try{
-
             commonResponse = new CommonResponse<>(categoryService.getMidCategoryStatus(map));
             commonResponse.setStatus(200);
 
