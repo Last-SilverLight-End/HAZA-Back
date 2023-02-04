@@ -32,4 +32,22 @@ public class BoardService {
             sqlSession.close();
         }
     }
+    public List<BoardVo> getSpecificStatus(int id) throws Exception {
+        SqlSession sqlSession = null;
+        try {
+            BoardDao boardDao = new BoardDao();
+            SqlSessionManager sqlSessionManager = new SqlSessionManager();
+            sqlSession = sqlSessionManager.getSqlSession();
+
+            return boardDao.getSpecificBoardLists(id,sqlSession);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error(e.getMessage());
+            throw e;
+        }
+        finally {
+            sqlSession.close();
+        }
+    }
 }

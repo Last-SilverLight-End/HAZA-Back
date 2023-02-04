@@ -36,7 +36,7 @@ public class OauthService {
         return "NOT ALLOW TYPE";
     }
 
-    //    GetSocialOAuthRes
+    //GetSocialOAuthRes
     public String oAuthLogin(String code) throws JsonProcessingException {
         // Access Token 발급
         ResponseEntity<String> accessToken = googleOauth.requestAccessToken(code);

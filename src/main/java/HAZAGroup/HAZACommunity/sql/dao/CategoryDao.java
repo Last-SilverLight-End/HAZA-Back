@@ -21,16 +21,17 @@ public class CategoryDao {
 
 
     // MainCategoryBoard 조회
-    public List<GenreMainCategoryVo> getMainCategoryLists( SqlSession sqlSession) throws Exception {
-
-        List<GenreMainCategoryVo> MainCategoryLists = sqlSession.selectList("category.getMainCategoryLists");
+    public List<GenreMainCategoryVo> getMainCategoryLists(Map<String, Object> map, SqlSession sqlSession) throws Exception {
+        System.out.println(map);
+        List<GenreMainCategoryVo> MainCategoryLists = sqlSession.selectList("category.getMainCategoryLists",map);
+        System.out.println("MainCategoryLists = " + MainCategoryLists);
         return MainCategoryLists;
     }
     // MidCategoryBoard 조회
     public List<GenreMidCategoryVo> getMidCategoryLists(Map<String, Object> map,SqlSession sqlSession) throws Exception{
         System.out.println(map);
         List<GenreMidCategoryVo> MidCategoryLists = sqlSession.selectList("category.getMidCategoryLists",map);
-        System.out.println(MidCategoryLists);
+        System.out.println("MidCategoryLists = " + MidCategoryLists);
         return MidCategoryLists;
     }
 

@@ -39,6 +39,24 @@ public class BoardController {
                             "조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
+    @GetMapping(produces = "application/json;charset=UTF-8")
+    public ResponseEntity<BasicResponse> getSpecificInform(@RequestParam int id) throws Exception{
+        CommonResponse<List<BoardVo>> commonResponse;
+        id = 1;
+
+        try{
+            commonResponse = new CommonResponse<List<BoardVo>>(boardService.getSpecificStatus(id));
+            commonResponse.setStatus(200);
+
+            return ResponseEntity.ok().body(commonResponse);
+
+        }catch (Exception e){
+            // 임시 예외처리 향후 Exception별로 구현 필요
+            return ResponseEntity.internalServerError()
+                    .body(new ErrorResponse(
+                            "게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        }
+    }
 
 
 }
