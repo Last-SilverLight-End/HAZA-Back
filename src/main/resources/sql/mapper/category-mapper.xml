@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="category">
-    <select id="getMainCategoryLists" resultMap="MainCategoryMap" >
-        SELECT
-            TB_BOARD_MAINCATEGORY.B_MAIN_CATE_ID AS B_MAIN_CATE_ID
-            ,TB_BOARD_MAINCATEGORY.MAIN_CATE_NAME AS MAIN_CATE_NAME
-        FROM TB_BOARD_MAINCATEGORY order by B_MAIN_CATE_ID
+
+    <select id="getMainCategoryLists" resultMap="MainCategoryMap" parameterType="map" >
+        select MAIN_CATE_NAME, B_MAIN_CATE_ID
+        from TB_BOARD_MAINCATEGORY
+        where  MAIN_CATE_NAME = #{main} Group by B_MAIN_CATE_ID
     </select>
 
     <select id="getMidCategoryLists" resultMap="MidCategoryMap" parameterType="map">
@@ -14,16 +14,20 @@
         where b.MAIN_CATE_NAME = #{main} and a.MID_CATE_NAME = #{sub}
     </select>
 
-
     <resultMap id="MainCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMainCategoryVo">
         <id property="mainCategory_Id" column="B_MAIN_CATE_ID"/>
-        <result property="Name" column="MAIN_CATE_NAME" />
+        <result property="Name" column="MAIN_CATE_NAME"/>
     </resultMap>
+
     <!--여기 고쳐야 한다. Mapped Statements collection does not contain value for category.getMidCategoryLists -->
     <resultMap id="MidCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMidCategoryVo">
         <id property="midCategory_Id" column="B_MID_CATE_ID"/>
-
         <result property="Name" column="MID_CATE_NAME"/>
+
+    </resultMap>
+
+    <resultMap id="MidCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMainCategoryVo">
+        <id property="mainCategory_Id" column="B_MAIN_CATE_ID"/>
         <result property="Name" column="MAIN_CATE_NAME" />
     </resultMap>
 

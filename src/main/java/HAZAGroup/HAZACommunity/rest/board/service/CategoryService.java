@@ -25,13 +25,14 @@ public class CategoryService {
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             sqlSession = sqlSessionManager.getSqlSession();
 
-            return categoryDao.getMainCategoryLists(sqlSession);
+            return categoryDao.getMainCategoryLists(map,sqlSession);
 
         } catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
         }
+
         finally {
             sqlSession.close();
         }
