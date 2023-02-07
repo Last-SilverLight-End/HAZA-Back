@@ -1,7 +1,10 @@
 package HAZAGroup.HAZACommunity.oauth.service;
 
+import HAZAGroup.HAZACommunity.oauth.model.GetSocialOAuthRes;
 import HAZAGroup.HAZACommunity.oauth.model.GoogleUser;
 import HAZAGroup.HAZACommunity.oauth.token.GoogleOAuthToken;
+import HAZAGroup.HAZACommunity.rest.board.model.UserVo;
+import HAZAGroup.HAZACommunity.rest.board.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -20,6 +23,10 @@ public class OauthService {
 
     @Autowired
     private GoogleOauth googleOauth;
+    @Autowired
+    private JwtService jwtService;
+    @Autowired
+    private UserService userService;
 
     public String request(String type) throws IOException {
         switch (type) {
@@ -36,24 +43,41 @@ public class OauthService {
         return "NOT ALLOW TYPE";
     }
 
-    //GetSocialOAuthRes
-    public String oAuthLogin(String code) throws JsonProcessingException {
-        // Access Token 발급
-        ResponseEntity<String> accessToken = googleOauth.requestAccessToken(code);
-        GoogleOAuthToken googleOAuthToken = googleOauth.getAccessToken(accessToken);
+    public GetSocialOAuthRes oAuthLogin(String code) throws JsonProcessingException {
 
-        log.info("GoogleOAuthToken: {}", googleOAuthToken);
+        try {
+            // Access Token 발급
+            ResponseEntity<String> accessToken = googleOauth.requestAccessToken(code);
+            GoogleOAuthToken googleOAuthToken = googleOauth.getAccessToken(accessToken);
 
-        // Access Token 으로 유저 정보 조회
-        ResponseEntity<String> userInfoResponse = googleOauth.requestUserInfo(googleOAuthToken);
-        GoogleUser googleUser = googleOauth.getUserInfo(userInfoResponse);
+            log.info("GoogleOAuthToken: {}", googleOAuthToken);
 
-        log.info("GoogleUser: {}", googleUser);
+            // Access Token 으로 유저 정보 조회
+            ResponseEntity<String> userInfoResponse = googleOauth.requestUserInfo(googleOAuthToken);
+            GoogleUser googleUser = googleOauth.getUserInfo(userInfoResponse);
 
-        String user_id = googleUser.getEmail();
+            log.info("GoogleUser: {}", googleUser);
 
-//        new GetSocialOAuthRes("1234",1,"asdf", googleOAuthToken.getToken_type());
-        return user_id;
+            String user_id = googleUser.getEmail();
+
+            // 1. user validation And get UserId
+
+            UserVo userVo = userService.getUserToEmail(user_id);
+
+            // 2. jwt token 생성
+
+            String jwtToken = jwtService.createJwt(userVo.getId());
+
+            // 3. GetSocialOAuthRes 객체 리턴
+
+            return new GetSocialOAuthRes(jwtToken, userVo.getId(), googleOAuthToken.getAccess_token(), googleOAuthToken.getToken_type());
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            throw e;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
