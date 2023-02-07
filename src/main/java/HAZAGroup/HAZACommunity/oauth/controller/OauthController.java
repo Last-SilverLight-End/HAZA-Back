@@ -2,6 +2,7 @@ package HAZAGroup.HAZACommunity.oauth.controller;
 
 import HAZAGroup.HAZACommunity.common.response.model.BasicResponse;
 import HAZAGroup.HAZACommunity.common.response.model.CommonResponse;
+import HAZAGroup.HAZACommunity.oauth.model.GetSocialOAuthRes;
 import HAZAGroup.HAZACommunity.oauth.service.OauthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.servlet.http.HttpServletResponse;
@@ -34,9 +35,7 @@ public class OauthController {
     public void socialLoginRequest(@PathVariable(value = "type") String type, HttpServletResponse response) throws IOException {
 //         허용되지 않은 type 일 경우 Redirect할 페이지 주소 필요?
         logger.info("Start!");
-        logger.info("type.toUpperCase() : ", type.toUpperCase());
         String requestURL = oauthService.request(type.toUpperCase());
-        logger.info("requestURL : " + requestURL);
         response.sendRedirect(requestURL);
         logger.info("End!");
     }
@@ -54,7 +53,7 @@ public class OauthController {
     public ResponseEntity<BasicResponse> getAuthorizationCode(
             @PathVariable(value = "type") String type, @RequestParam(value = "code") String code) throws JsonProcessingException {
         // TODO: platform type 별로 분기 처리
-        String email = oauthService.oAuthLogin(code);
-        return new ResponseEntity<>(new CommonResponse<String>(email), HttpStatus.OK);
+        GetSocialOAuthRes response = oauthService.oAuthLogin(code);
+        return new ResponseEntity<>(new CommonResponse<>(response.getJwtToken()), HttpStatus.OK);
     }
 }

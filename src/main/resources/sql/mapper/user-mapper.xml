@@ -1,19 +1,29 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="user">
     <select id="getUserList" resultMap="userMap">
         SELECT
-            BD.id AS ID
-             ,BD.board_title AS TITLE
-             ,BD.board_content AS CONTENT
-             ,BD.board_hit AS HIT
-             ,BD.created_date AS CREATED_DATE
-             ,BD.modified_date AS MODIFIED_DATE
+        BD.id AS ID
+        ,BD.board_title AS TITLE
+        ,BD.board_content AS CONTENT
+        ,BD.board_hit AS HIT
+        ,BD.created_date AS CREATED_DATE
+        ,BD.modified_date AS MODIFIED_DATE
         FROM user TB_USER order by TB_USER.EMAIL
     </select>
+
+    <select id="getUserToEmail" parameterType="String" resultMap="userMap">
+        SELECT TU.USER_ID AS USER_ID
+        ,TU.USER_NM AS USER_NM
+        ,TU.USER_EMAIL AS USER_EMAIL
+        ,TU.USER_ROLE AS USER_ROLE
+        FROM TB_USER TU WHERE TU.USER_EMAIL = #{user_email}
+    </select>
+
     <resultMap id="userMap" type="HAZAGroup.HAZACommunity.rest.board.model.UserVo">
         <result property="id" column="USER_ID"/>
         <result property="email" column="USER_EMAIL"/>
-        <result property="name" column="NAME"/>
+        <result property="name" column="USER_NM"/>
+        <result property="roleType" column="USER_ROLE"/>
     </resultMap>
 </mapper>

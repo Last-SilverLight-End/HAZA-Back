@@ -8,8 +8,12 @@ import java.util.List;
 
 @Mapper
 public class UserDao {
-    public List<UserVo> getUserList(SqlSession sqlSession) throws Exception{
+    public List<UserVo> getUserList(SqlSession sqlSession) throws Exception {
         // 지금 여기에서는 1개만 넘기지만 나중에 hashmap으로 해서 전체로 넘겨야 한다.
         return sqlSession.selectList("user.getUserList");
+    }
+
+    public UserVo getUserToEmail(SqlSession sqlSession, String userId) throws Exception {
+        return sqlSession.selectOne("user.getUserToEmail", userId);
     }
 }

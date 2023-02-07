@@ -21,10 +21,24 @@ public class UserService {
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             SqlSession sqlSession = sqlSessionManager.getSqlSession();
             return userDao.getUserList(sqlSession).get(0);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
+        }
+    }
+
+    public UserVo getUserToEmail(String userId) throws Exception {
+        try {
+            UserDao userDao = new UserDao();
+            SqlSessionManager sqlSessionManager = new SqlSessionManager();
+            SqlSession sqlSession = sqlSessionManager.getSqlSession();
+            return userDao.getUserToEmail(sqlSession, userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+
         }
     }
 }

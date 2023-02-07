@@ -3,18 +3,20 @@
 <configuration>
     <!--mapper에서 매칭할 parmeter Type 별칭 설정-->
     <typeAliases>
+        <typeAlias alias="userMap" type="HAZAGroup.HAZACommunity.rest.board.model.UserVo"/>
     </typeAliases>
 
 
-    <environments default="development">
+    <environments default="local">
 
         <!-- environment id를 구분하여 연결할 DB를 여려개 구성할 수 도 있음 -->
-        <environment id="development">
+        <environment id="local">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
                 <!--mysql server 생성 후 변경 필요-->
-                <property name="url" value="jdbc:mysql://haza.cktovlso2ukh.ap-northeast-1.rds.amazonaws.com:3306/DEVHAZA?autoReconnect=true"/>
+                <property name="url"
+                          value="jdbc:mysql://haza.cktovlso2ukh.ap-northeast-1.rds.amazonaws.com:3306/DEVHAZA?autoReconnect=true"/>
                 <property name="username" value="root"/>
                 <property name="password" value="roothaza123"/>
             </dataSource>
@@ -25,7 +27,7 @@
     <!--    mapper.xml 경로-->
     <mappers>
         <mapper resource="sql/mapper/board-mapper.xml"/>
-
+        <mapper resource="sql/mapper/user-mapper.xml"/>
     </mappers>
 
 
