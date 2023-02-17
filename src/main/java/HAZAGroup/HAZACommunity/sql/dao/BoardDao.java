@@ -20,11 +20,9 @@ public class BoardDao {
         return BoardLists;
     }
     public List<BoardVo> getSpecificBoardLists(int id,SqlSession sqlSession) throws Exception{
-        int id_input = id;
-        System.out.println("dao id is : " + id);
-        List<BoardVo> BoardSpecificLists = sqlSession.selectList("board.getSpecificBoardLists",id_input);
+
+        List<BoardVo> BoardSpecificLists = sqlSession.selectList("board.getSpecificBoardLists",id);
         return BoardSpecificLists;
     }
-
 
 }
