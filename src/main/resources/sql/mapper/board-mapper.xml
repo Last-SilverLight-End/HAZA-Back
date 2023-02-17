@@ -36,13 +36,11 @@
 
              ,TB_BOARD.B_MAIN_CATE_ID AS B_MAIN_CATE_ID
              ,TB_BOARD.B_MID_CATE_ID AS B_MID_CATE_ID
-        FROM TB_BOARD order by TB_BOARD.BOARD_ID
-        where BOARD_ID = #{id}
+        FROM TB_BOARD where BOARD_ID = #{id}
     </select>
 
     <resultMap id="boardMap" type="HAZAGroup.HAZACommunity.rest.board.model.BoardVo">
-        <id property="board_id" column="id"/>
-        <result property="board_id" column="BOARD_ID"/>
+        <id property="board_id" column="BOARD_ID"/>
         <result property="title" column="BOARD_TITLE" />
         <result property="content" column="BOARD_CONTENT" />
         <result property="hit" column="BOARD_HIT" />
