@@ -24,7 +24,7 @@ import java.util.Map;
 
 @Controller
 @Mapper
-@RequestMapping("/api/boards")
+@RequestMapping("/api/categories")
 public class CategoryController {
 
     @Autowired
@@ -57,7 +57,6 @@ public class CategoryController {
     }
 
     //http://localhost:8080/api/boards?main=Movie
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json;charset=UTF-8" )
 
     public @ResponseBody
     ResponseEntity<BasicResponse> getMainGenres(@RequestParam String main) throws Exception{
@@ -75,9 +74,10 @@ public class CategoryController {
         catch (Exception e){
             return ResponseEntity.internalServerError()
                     .body(
-                        new ErrorResponse("조회 실패",HttpStatus.INTERNAL_SERVER_ERROR.value())
+                            new ErrorResponse("조회 실패",HttpStatus.INTERNAL_SERVER_ERROR.value())
                     );
         }
     }
+
 
 }

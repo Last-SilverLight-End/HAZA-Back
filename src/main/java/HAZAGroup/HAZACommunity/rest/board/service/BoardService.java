@@ -13,9 +13,9 @@ import java.util.List;
 @Service
 public class BoardService {
     Logger logger = LoggerFactory.getLogger(BoardService.class);
-
+    SqlSession sqlSession = null;
     public List<BoardVo> getBoardStatus() throws Exception {
-        SqlSession sqlSession = null;
+
         try {
             BoardDao boardDao = new BoardDao();
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
@@ -32,8 +32,10 @@ public class BoardService {
             sqlSession.close();
         }
     }
+
+
     public List<BoardVo> getSpecificStatus(int id) throws Exception {
-        SqlSession sqlSession = null;
+        System.out.println("service id = " + id);
         try {
             BoardDao boardDao = new BoardDao();
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
