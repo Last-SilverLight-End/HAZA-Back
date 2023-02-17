@@ -21,11 +21,12 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+    //http://localhost:8080/api/boards
     @GetMapping(produces = "application/json;charset=UTF-8")
     public ResponseEntity<BasicResponse> getDrawingInform() throws Exception {
 
         CommonResponse<List<BoardVo>> commonResponse;
-
+        System.out.println("this is all id");
         try {
             commonResponse = new CommonResponse<List<BoardVo>>(boardService.getBoardStatus());
             commonResponse.setStatus(200);
@@ -39,11 +40,13 @@ public class BoardController {
                             "조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
-    @GetMapping(produces = "application/json;charset=UTF-8")
-    public ResponseEntity<BasicResponse> getSpecificInform(@RequestParam int id) throws Exception{
-        CommonResponse<List<BoardVo>> commonResponse;
-        id = 1;
 
+    //http://localhost:8080/api/boards?id=3
+    @GetMapping(produces = "application/json;charset=UTF-8",params = "id")
+    public ResponseEntity<BasicResponse> getSpecificInform(@RequestParam("id") int id) throws Exception{
+        CommonResponse<List<BoardVo>> commonResponse;
+
+        System.out.println("this is inserted id : " + id);
         try{
             commonResponse = new CommonResponse<List<BoardVo>>(boardService.getSpecificStatus(id));
             commonResponse.setStatus(200);

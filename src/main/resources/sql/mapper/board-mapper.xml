@@ -20,7 +20,7 @@
         FROM TB_BOARD order by TB_BOARD.CREATED_DATE
     </select>
 
-    <select id="getSpecificBoardLists" resultMap="boardSpecificMap" parameterType="id">
+    <select id="getSpecificBoardLists" resultMap="boardSpecificMap" parameterType="int">
         SELECT
             TB_BOARD.BOARD_ID AS BOARD_ID
              ,TB_BOARD.BOARD_TITLE AS BOARD_TITLE
@@ -41,7 +41,8 @@
     </select>
 
     <resultMap id="boardMap" type="HAZAGroup.HAZACommunity.rest.board.model.BoardVo">
-        <id property="board_id" column="BOARD_ID"/>
+        <id property="board_id" column="id"/>
+        <result property="board_id" column="BOARD_ID"/>
         <result property="title" column="BOARD_TITLE" />
         <result property="content" column="BOARD_CONTENT" />
         <result property="hit" column="BOARD_HIT" />
