@@ -13,7 +13,7 @@ public class SqlSessionManager {
     public static final String RESOURCE = "sql/mybatis-config.xml";
     private static final Logger logger = LoggerFactory.getLogger(SqlSessionManager.class);
 
-    public SqlSession getSqlSession() {
+    public SqlSession getSqlSession() throws Exception{
         SqlSession sqlSession = null;
         try {
             InputStream is = Resources.getResourceAsStream(RESOURCE);
