@@ -25,4 +25,10 @@ public class BoardDao {
         return BoardSpecificLists;
     }
 
+    public int getDeleteBoardLists(Integer id,SqlSession sqlSession) throws Exception{
+        int result = sqlSession.delete("board.getDeleteBoard",id);
+        return result;
+    }
+
+
 }

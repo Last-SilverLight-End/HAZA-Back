@@ -32,8 +32,6 @@ public class BoardService {
             sqlSession.close();
         }
     }
-
-
     public List<BoardVo> getSpecificStatus(int id) throws Exception {
         System.out.println("service id = " + id);
         try {
@@ -52,4 +50,28 @@ public class BoardService {
             sqlSession.close();
         }
     }
+
+    public int getDeleteStatus(int id) throws Exception {
+        System.out.println("service id = " + id);
+
+        try {
+            BoardDao boardDao = new BoardDao();
+            SqlSessionManager sqlSessionManager = new SqlSessionManager();
+            sqlSession = sqlSessionManager.getSqlSession();
+            int result = boardDao.getDeleteBoardLists(id,sqlSession);
+            return result;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error(e.getMessage());
+            throw e;
+        }
+        finally {
+            sqlSession.close();
+        }
+    }
+
+
+
+
 }
