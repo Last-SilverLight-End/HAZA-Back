@@ -22,7 +22,7 @@ public class BoardController {
     private BoardService boardService;
 
     //http://localhost:8080/api/boards
-    @GetMapping(produces = "application/json;charset=UTF-8")
+    @GetMapping(value = "all",produces = "application/json;charset=UTF-8")
     public ResponseEntity<BasicResponse> getDrawingInform() throws Exception {
 
         CommonResponse<List<BoardVo>> commonResponse;
@@ -40,15 +40,15 @@ public class BoardController {
                             "조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
-
+    // 보드 지우기
     //http://localhost:8080/api/boards?id=3
-    @GetMapping(produces = "application/json;charset=UTF-8",params = "id")
+    @RequestMapping(produces = "application/json;charset=UTF-8",params = "id",method = RequestMethod.DELETE)
     public ResponseEntity<BasicResponse> getSpecificInform(@RequestParam("id") int id) throws Exception{
-        CommonResponse<List<BoardVo>> commonResponse;
+        CommonResponse<String> commonResponse;
 
         System.out.println("this is inserted id : " + id);
         try{
-            commonResponse = new CommonResponse<List<BoardVo>>(boardService.getSpecificStatus(id));
+            commonResponse = new CommonResponse<String>(boardService.getDeleteBoard(id));
             commonResponse.setStatus(200);
 
             return ResponseEntity.ok().body(commonResponse);
@@ -57,9 +57,11 @@ public class BoardController {
             // 임시 예외처리 향후 Exception별로 구현 필요
             return ResponseEntity.internalServerError()
                     .body(new ErrorResponse(
-                            "게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+                            "게시판 상세내용 삭제 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
+
+    //http
 
 
 }

@@ -14,6 +14,9 @@ import java.util.List;
 public class BoardService {
     Logger logger = LoggerFactory.getLogger(BoardService.class);
     SqlSession sqlSession = null;
+
+
+    // 전체 보드 상태 불러오기
     public List<BoardVo> getBoardStatus() throws Exception {
 
         try {
@@ -33,7 +36,7 @@ public class BoardService {
         }
     }
 
-
+    // 특정 id 보드 상태 불러오기
     public List<BoardVo> getSpecificStatus(int id) throws Exception {
         System.out.println("service id = " + id);
         try {
@@ -52,4 +55,29 @@ public class BoardService {
             sqlSession.close();
         }
     }
+    
+    // 특정 id 보드 삭제
+    public String getDeleteBoard(int id) throws Exception {
+        System.out.println("service id = " + id);
+        try {
+            BoardDao boardDao = new BoardDao();
+            SqlSessionManager sqlSessionManager = new SqlSessionManager();
+            sqlSession = sqlSessionManager.getSqlSession();
+            String responseString ="";
+            responseString = BoardDao.deleteBoardList(id,sqlSession);
+
+            return responseString;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error(e.getMessage());
+            throw e;
+        }
+        finally {
+            sqlSession.close();
+        }
+    }
+
+
+
 }
