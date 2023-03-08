@@ -36,12 +36,15 @@ public class BoardDao {
     }
 
     // delete board
-    public List<BoardVo> deleteBoardList(int id , SqlSession sqlSession) throws Exception{
+    public static String deleteBoardList(int id, SqlSession sqlSession) throws Exception{
         //nt Id = id;
-        List<BoardVo> BoardDeleteList= sqlSession.selectList("board.deleteBoardList",id);
+        String response;
+        response= sqlSession.selectList("board.deleteBoardList",id).toString();
 
-        return BoardDeleteList;
+        return response;
     }
+
+
 
     //
 
