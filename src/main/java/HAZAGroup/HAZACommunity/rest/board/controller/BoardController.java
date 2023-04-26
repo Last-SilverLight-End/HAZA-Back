@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+
 @RestController
 @Mapper
 @RequestMapping("/api/boards")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 public class BoardController {
 
     private final BoardService boardService;
@@ -25,8 +29,8 @@ public class BoardController {
         this.boardService = boardService;
     }
 
-    //http://localhost:8080/api/boards
-    @RequestMapping(value ="all",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
+    //http://localhost:8080/api/boards/all
+    @RequestMapping(value ="all",method = {RequestMethod.OPTIONS,RequestMethod.GET},produces = "application/json;charset=UTF-8")
     public ResponseEntity<BasicResponse> getDrawingInform() throws Exception {
 
         CommonResponse<List<BoardVo>> commonResponse;
@@ -51,7 +55,7 @@ public class BoardController {
         CommonResponse<List<BoardVo>> commonResponse;
 
         System.out.println("this is inserted id : " + id);
-        System.out.println(id instanceof Integer);
+        System.out.println(id != null);
 
         try{
             commonResponse = new CommonResponse<List<BoardVo>>(boardService.getSpecificStatus(id));
@@ -68,9 +72,10 @@ public class BoardController {
     }
     // delete boards
     @RequestMapping(produces = "application/json;charset=UTF-8",method = RequestMethod.DELETE,params = "id")
-    public ResponseEntity<BasicResponse> getDeleteInform(@RequestParam("id") int id) throws Exception{
+    public ResponseEntity<BasicResponse> getDeleteInform(@RequestParam("id") Integer id) throws Exception{
         CommonResponse<Integer> commonResponse;
         System.out.println("id = " + id);
+
         try{
             commonResponse = new CommonResponse<>(boardService.getDeleteStatus(id));
             commonResponse.setStatus(200);

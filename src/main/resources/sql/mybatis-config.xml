@@ -28,6 +28,7 @@
     <mappers>
         <mapper resource="sql/mapper/board-mapper.xml"/>
         <mapper resource="sql/mapper/user-mapper.xml"/>
+        <mapper resource="sql/mapper/category-mapper.xml"/>
     </mappers>
 
 
