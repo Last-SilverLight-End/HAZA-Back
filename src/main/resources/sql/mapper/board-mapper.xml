@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
 <mapper namespace="board">
     <!-- 보드 전체 리스트 불러오기 -->
     <select id="getBoardLists" resultMap="boardMap">
@@ -40,15 +42,21 @@
         FROM TB_BOARD where BOARD_ID = #{id};
     </select>
     <!--보드 삭제 -->
-    <delete id="getDeleteBoard" parameterType="int">
+    <delete id="getDeleteBoard">
         DELETE FROM TB_BOARD
             WHERE BOARD_ID = #{id};
     </delete>
-    <!-- 보드 생성 -->
-    <insert id="getCreateBoard" parameterMap="boardCreateMap" parameterType="map">
+    <!-- 보드 생성 는 나중에 넣을지 생각 -->
+    <insert id="getCreateBoard" useGeneratedKeys="true" keyProperty = "id">
         INSERT INTO TB_BOARD
         VALUES (#{id} , #{title},#{content}, #{hit},#{created_date},#{modified_date},#{user_id},#{user_name},#{user_email},#{b_mid_cate_id},#{b_main_cate_id});
     </insert>
+
+    <!-- 보드 수정 -->
+    <update id="modifyBoardList">
+        update TB_BOARD
+            set BOARD_TITLE = {}
+    </update>
 
     <!--보드 내용 변경들 update 대신 post 로 하는 편이 더 나을듯 -->
 

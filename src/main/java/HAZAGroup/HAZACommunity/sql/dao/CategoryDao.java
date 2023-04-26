@@ -19,7 +19,13 @@ public class CategoryDao {
 
 
 
-
+    // 전체 Category 조회
+    public List<GenreMidCategoryVo> getAllCategoryLists(SqlSession sqlSession) throws Exception{
+        System.out.println("show all lists");
+        List<GenreMidCategoryVo> AllCategoryLists = sqlSession.selectList("category.getAllCategoryLists");
+        System.out.println("MainCategoryLists = " + AllCategoryLists);
+        return AllCategoryLists;
+    }
     // MainCategoryBoard 조회
     public List<GenreMainCategoryVo> getMainCategoryLists(Map<String, Object> map, SqlSession sqlSession) throws Exception {
         System.out.println(map);
@@ -34,5 +40,7 @@ public class CategoryDao {
         System.out.println("MidCategoryLists = " + MidCategoryLists);
         return MidCategoryLists;
     }
+
+
 
 }

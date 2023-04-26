@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.io.InputStream;
 
@@ -13,7 +14,7 @@ public class SqlSessionManager {
     public static final String RESOURCE = "sql/mybatis-config.xml";
     private static final Logger logger = LoggerFactory.getLogger(SqlSessionManager.class);
 
-    public SqlSession getSqlSession() {
+    public SqlSession getSqlSession() throws Exception{
         SqlSession sqlSession = null;
         try {
             InputStream is = Resources.getResourceAsStream(RESOURCE);

@@ -18,6 +18,22 @@ public class CategoryService {
     Logger logger = LoggerFactory.getLogger(CategoryService.class);
     SqlSession sqlSession = null;
 
+    public List<GenreMidCategoryVo> getAllCategory() throws Exception {
+        try{
+            CategoryDao categoryDao = new CategoryDao();
+            SqlSessionManager sqlSessionManager = new SqlSessionManager();
+            sqlSession = sqlSessionManager.getSqlSession();
+
+            return categoryDao.getAllCategoryLists(sqlSession);
+        } catch (Exception e){
+            e.printStackTrace();
+            logger.error(e.getMessage());
+            throw e;
+        }
+    }
+
+
+
     public List<GenreMainCategoryVo> getMainCategoryStatus(Map<String, Object> map) throws Exception{
 
         try{
