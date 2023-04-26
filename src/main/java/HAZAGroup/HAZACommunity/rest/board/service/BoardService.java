@@ -36,6 +36,9 @@ public class BoardService {
         }
     }
 
+
+    // 특정 id 보드 상태 불러오기
+
     public List<BoardVo> getSpecificStatus(int id) throws Exception {
         System.out.println("service id = " + id);
         try {
@@ -55,12 +58,6 @@ public class BoardService {
         }
     }
 
-
-    public String getDeleteStatus(int id) throws Exception {
-        System.out.println("service id = " + id);
-
-
-    
     // 특정 id 보드 삭제
     public String getDeleteBoard(int id) throws Exception {
         System.out.println("service id = " + id);
@@ -69,9 +66,6 @@ public class BoardService {
             BoardDao boardDao = new BoardDao();
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             sqlSession = sqlSessionManager.getSqlSession();
-
-            int result = boardDao.getDeleteBoardLists(id,sqlSession);
-            return result;
 
             String responseString ="";
             responseString = BoardDao.deleteBoardList(id,sqlSession);
