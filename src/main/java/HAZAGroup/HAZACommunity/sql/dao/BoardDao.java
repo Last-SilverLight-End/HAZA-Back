@@ -42,4 +42,22 @@ public class BoardDao {
         return BoardModifyList;
     }
 
+
+    // delete board
+    public static String deleteBoardList(int id, SqlSession sqlSession) throws Exception{
+        //nt Id = id;
+        String response;
+        response= sqlSession.selectList("board.deleteBoardList",id).toString();
+
+        return response;
+    }
+
+
+
+    //
+
+    // create board
+
+
+
 }
