@@ -59,7 +59,7 @@ public class BoardService {
     }
 
     // 특정 id 보드 삭제
-    public String getDeleteBoard(int id) throws Exception {
+    public String getDeleteBoardStatus(Integer id) throws Exception {
         System.out.println("service id = " + id);
 
         try {

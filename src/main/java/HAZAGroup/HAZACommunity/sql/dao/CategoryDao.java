@@ -17,14 +17,20 @@ public class CategoryDao {
     @Autowired
     private DataSource dataSource;
 
+    // 전체 MainCategory 조회
+    public List<GenreMainCategoryVo> getAllMainCategoryLists(SqlSession sqlSession) throws Exception{
+        System.out.println("show all MainCategory lists");
+        List<GenreMainCategoryVo> mainAllCategoryLists = sqlSession.selectList("category.getAllMainCategoryLists");
+        System.out.println("MainCategoryLists = " + mainAllCategoryLists);
+        return mainAllCategoryLists;
+    }
 
-
-    // 전체 Category 조회
-    public List<GenreMidCategoryVo> getAllCategoryLists(SqlSession sqlSession) throws Exception{
-        System.out.println("show all lists");
-        List<GenreMidCategoryVo> AllCategoryLists = sqlSession.selectList("category.getAllCategoryLists");
-        System.out.println("MainCategoryLists = " + AllCategoryLists);
-        return AllCategoryLists;
+    // 전체 MidCategory 조회
+    public List<GenreMidCategoryVo> getAllMidCategoryLists(SqlSession sqlSession) throws Exception{
+        System.out.println("show all MidCategory lists");
+        List<GenreMidCategoryVo> midAllCategoryLists = sqlSession.selectList("category.getAllMidCategoryLists");
+        System.out.println("MidCategoryLists = " + midAllCategoryLists);
+        return midAllCategoryLists;
     }
     // MainCategoryBoard 조회
     public List<GenreMainCategoryVo> getMainCategoryLists(Map<String, Object> map, SqlSession sqlSession) throws Exception {
