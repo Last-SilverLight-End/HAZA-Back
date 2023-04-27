@@ -2,7 +2,14 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="category">
 
-    <select id="getAllCategoryLists" resultMap="AllMidCategoryMap" >
+    <select id="getAllMainCategoryLists" resultMap="AllMainCategoryMap">
+    select TB_BOARD_MAINCATEGORY.MAIN_CATE_NAME AS MAIN_CATE_NAME,
+           TB_BOARD_MAINCATEGORY.B_MAIN_CATE_ID AS B_MAIN_CATE_ID
+            from TB_BOARD_MAINCATEGORY;
+
+    </select>
+
+    <select id="getAllMidCategoryLists" resultMap="AllMidCategoryMap" >
         select TB_BOARD_MIDCATEGORY.B_MID_CATE_ID AS B_MID_CATE_ID,
                TB_BOARD_MIDCATEGORY.MID_CATE_NAME AS MID_CATE_NAME,
                TB_BOARD_MIDCATEGORY.B_MAIN_CATE_ID AS B_MAIN_CATE_ID
@@ -21,6 +28,12 @@
         from  TB_BOARD_MAINCATEGORY b ,TB_BOARD_MIDCATEGORY a
         where b.MAIN_CATE_NAME = #{main} and a.MID_CATE_NAME = #{sub}
     </select>
+
+    <resultMap id="AllMainCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMainCategoryVo">
+        <id property="mainCategory_Id" column="B_MAIN_CATE_ID"/>
+        <result property="Name" column="MAIN_CATE_NAME"/>
+    </resultMap>
+
     <resultMap id="AllMidCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMidCategoryVo">
         <id property="midCategory_Id" column="B_MID_CATE_ID"/>
         <result property="parentsCategory_Id" column="B_MAIN_CATE_ID"/>

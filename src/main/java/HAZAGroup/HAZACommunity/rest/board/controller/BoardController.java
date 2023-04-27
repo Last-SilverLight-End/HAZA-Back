@@ -73,11 +73,11 @@ public class BoardController {
     // delete boards
     @RequestMapping(produces = "application/json;charset=UTF-8",method = RequestMethod.DELETE,params = "id")
     public ResponseEntity<BasicResponse> getDeleteInform(@RequestParam("id") Integer id) throws Exception{
-        CommonResponse<Integer> commonResponse;
+        CommonResponse<String> commonResponse;
         System.out.println("id = " + id);
 
         try{
-            commonResponse = new CommonResponse<>(boardService.getDeleteStatus(id));
+            commonResponse = new CommonResponse<>(boardService.getDeleteBoardStatus(id));
             commonResponse.setStatus(200);
             System.out.println("result is = " + commonResponse.toString());
 

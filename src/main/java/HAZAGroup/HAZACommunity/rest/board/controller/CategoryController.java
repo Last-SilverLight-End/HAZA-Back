@@ -30,17 +30,40 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
+    /**
+     * 전체 main Category 출력
+     * //http://localhost:8080/api/categories/mainAll
+     */
+    @RequestMapping(value ="/mainAll", method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
+    public @ResponseBody
+    ResponseEntity<BasicResponse> getAllMainCategories() throws Exception{
+        CommonResponse<List<GenreMainCategoryVo>> commonResponse;
+        try{
+            commonResponse = new CommonResponse<>(categoryService.getAllMainCategory());
+            commonResponse.setStatus(200);
+            return ResponseEntity.ok().body(commonResponse);
+        }
 
-    //전체 Category 출력
-    //http://localhost:8080/api/categories/all
-    @RequestMapping(value ="/all" , method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+        catch (Exception e){
+            return ResponseEntity.internalServerError()
+                    .body(
+                            new ErrorResponse("조회 실패",HttpStatus.INTERNAL_SERVER_ERROR.value())
+                    );
+        }
+    }
+
+    /**
+     * 전체 mid Category 출력
+     * //http://localhost:8080/api/categories/midAll
+     */
+    @RequestMapping(value ="/midAll" , method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
 
     public @ResponseBody
-    ResponseEntity<BasicResponse> getAllCategories() throws Exception{
+    ResponseEntity<BasicResponse> getAllMidCategories() throws Exception{
         CommonResponse<List<GenreMidCategoryVo>> commonResponse;
 
         try{
-            commonResponse = new CommonResponse<>(categoryService.getAllCategory());
+            commonResponse = new CommonResponse<>(categoryService.getAllMidCategory());
             commonResponse.setStatus(200);
             return ResponseEntity.ok().body(commonResponse);
         }
@@ -52,55 +75,54 @@ public class CategoryController {
         }
     }
 
-    //http://localhost:8080/api/categories?main=Movie&sub=Horror
-    @RequestMapping( method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-        public @ResponseBody
-        ResponseEntity<BasicResponse> getAllGenres(@RequestParam(value = "main") String main,@RequestParam(value = "sub") String sub) throws Exception{
-        Map<String,Object> map = new HashMap<String,Object>();
 
-        main = "Movie"; sub = "Horror";
+    @RequestMapping( method = RequestMethod.GET, produces = "application/json;charset=UTF-8" )
+        public @ResponseBody
+    // required false 일 경우 null로 반환되는걸 이용한다.
+        ResponseEntity<BasicResponse> getAllGenres(@RequestParam("main") String main,@RequestParam(value = "sub",required=false) String sub ) throws Exception{
+        Map<String,Object> map = new HashMap<String,Object>();
 
         map.put("main",main);
         map.put("sub",sub);
-        CommonResponse<List<GenreMidCategoryVo>> commonResponse;
 
-        try{
-            commonResponse = new CommonResponse<>(categoryService.getMidCategoryStatus(map));
-            commonResponse.setStatus(200);
-            return ResponseEntity.ok().body(commonResponse);
+        /** 상세 세부 정보 찾기
+         * http://localhost:8080/api/categories?main=Movie&sub=Horror
+         * */
+
+        if(sub!=null) {
+            CommonResponse<List<GenreMidCategoryVo>> commonResponse;
+            try {
+                commonResponse = new CommonResponse<>(categoryService.getMidCategoryStatus(map));
+                commonResponse.setStatus(200);
+                return ResponseEntity.ok().body(commonResponse);
+            } catch (Exception e) {
+                return ResponseEntity.internalServerError()
+                        .body(
+                                new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value())
+                        );
+            }
         }
-
-        catch (Exception e){
-            return ResponseEntity.internalServerError()
-                    .body(
-                        new ErrorResponse("조회 실패",HttpStatus.INTERNAL_SERVER_ERROR.value())
-                    );
-        }
-    }
-
-    //http://localhost:8080/api/categories?main=Movie
-
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json;charset=UTF-8" )
-        public @ResponseBody
-        ResponseEntity<BasicResponse> getMainGenres(@RequestParam(value = "main") String main) throws Exception{
-            Map<String,Object> map = new HashMap<String,Object>();
-            main = "Movie";
-            map.put("main",main);
+        //http://localhost:8080/api/categories?main=Movie
+        else{
             CommonResponse<List<GenreMainCategoryVo>> commonResponse;
-
             try{
                 commonResponse = new CommonResponse<>(categoryService.getMainCategoryStatus(map));
                 commonResponse.setStatus(200);
                 return ResponseEntity.ok().body(commonResponse);
             }
 
-        catch (Exception e){
-            return ResponseEntity.internalServerError()
-                    .body(
-                            new ErrorResponse("조회 실패",HttpStatus.INTERNAL_SERVER_ERROR.value())
-                    );
+            catch (Exception e){
+                return ResponseEntity.internalServerError()
+                        .body(
+                                new ErrorResponse("조회 실패",HttpStatus.INTERNAL_SERVER_ERROR.value())
+                        );
+            }
         }
     }
+
+
+
+
 
 
 }

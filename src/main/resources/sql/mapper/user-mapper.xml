@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="user">
-    <select id="getUserList" resultMap="userMap">
+    <select id="getAllUserLists" resultMap="userMap">
         SELECT
-        BD.id AS ID
-        ,BD.board_title AS TITLE
-        ,BD.board_content AS CONTENT
-        ,BD.board_hit AS HIT
-        ,BD.created_date AS CREATED_DATE
-        ,BD.modified_date AS MODIFIED_DATE
-        FROM user TB_USER order by TB_USER.EMAIL
+         TB_USER.USER_ID AS USER_ID
+             ,TB_USER.USER_NM AS USER_NM
+             ,TB_USER.USER_EMAIL AS USER_EMAIL
+             ,TB_USER.USER_ROLE as USER_ROLE
+        FROM TB_USER;
     </select>
 
     <select id="getUserToEmail" parameterType="String" resultMap="userMap">
