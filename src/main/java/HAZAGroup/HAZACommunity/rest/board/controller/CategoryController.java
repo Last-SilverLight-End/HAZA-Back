@@ -52,6 +52,7 @@ public class CategoryController {
         }
     }
 
+
     /**
      * 전체 mid Category 출력
      * //http://localhost:8080/api/categories/midAll

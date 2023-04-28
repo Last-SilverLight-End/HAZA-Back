@@ -35,7 +35,26 @@ public class BoardService {
             sqlSession.close();
         }
     }
+    // 특정 카테고리 id 보드들 불러오기
 
+    public List<BoardVo> getSpecificMainCategoryBoard(int main_Category_Id) throws Exception{
+        System.out.println("MainCategoryId = " + main_Category_Id);
+        try {
+            BoardDao boardDao = new BoardDao();
+            SqlSessionManager sqlSessionManager = new SqlSessionManager();
+            sqlSession = sqlSessionManager.getSqlSession();
+
+            return boardDao.getSpecificMainCategoryBoardLists(main_Category_Id,sqlSession);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error(e.getMessage());
+            throw e;
+        }
+        finally {
+            sqlSession.close();
+        }
+    }
 
     // 특정 id 보드 상태 불러오기
 
