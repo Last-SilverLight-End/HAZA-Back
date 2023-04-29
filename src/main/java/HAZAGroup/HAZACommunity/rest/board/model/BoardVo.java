@@ -29,8 +29,8 @@ public class BoardVo {
     @NonNull
     private String user_email;
 
-    private String main_Category_Id;
-    private String mid_Category_Id;
+    private String main_category_id;
+    private String mid_category_id;
 
 
 }

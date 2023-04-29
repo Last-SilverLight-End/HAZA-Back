@@ -35,12 +35,12 @@ public class UserService {
         }
     }
 
-    public UserVo getUserToEmail(String userId) throws Exception {
+    public UserVo getUserToEmail(String id) throws Exception {
         try {
             UserDao userDao = new UserDao();
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             SqlSession sqlSession = sqlSessionManager.getSqlSession();
-            return userDao.getUserToEmail(sqlSession, userId);
+            return userDao.getUserToEmail(sqlSession, id);
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
