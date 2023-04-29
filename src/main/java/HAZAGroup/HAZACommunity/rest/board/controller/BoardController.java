@@ -51,19 +51,19 @@ public class BoardController {
 
     /**
      *
-     * @param main_Category_Id
+     * @param main_category_id
      * 메인 카테고리에 맞는 board list 출력
-     * http://localhost:8080/api/boards?main_Category_Id=3
+     * http://localhost:8080/api/boards?main_category_id=3
      */
-    @RequestMapping(produces = "application/json;charset=UTF-8",method = RequestMethod.GET,params = "main_Category_Id")
-    public ResponseEntity<BasicResponse> getSpecificMainCategory(@RequestParam("main_Category_Id")Integer main_Category_Id) throws Exception{
+    @RequestMapping(produces = "application/json;charset=UTF-8",method = RequestMethod.GET,params = "main_category_id")
+    public ResponseEntity<BasicResponse> getSpecificMainCategory(@RequestParam("main_category_id")Integer main_category_id) throws Exception{
         CommonResponse<List<BoardVo>> commonResponse;
 
-        System.out.println("this is inserted main_Category_Id : " + main_Category_Id);
+        System.out.println("this is inserted main_category_id : " + main_category_id);
 
 
         try{
-            commonResponse = new CommonResponse<List<BoardVo>>(boardService.getSpecificMainCategoryBoard(main_Category_Id));
+            commonResponse = new CommonResponse<List<BoardVo>>(boardService.getSpecificMainCategoryBoard(main_category_id));
             commonResponse.setStatus(200);
 
             return ResponseEntity.ok().body(commonResponse);

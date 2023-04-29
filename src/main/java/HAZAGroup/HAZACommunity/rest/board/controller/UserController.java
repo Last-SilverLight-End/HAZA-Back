@@ -24,6 +24,9 @@ public class UserController {
         this.userService = userService;
     }
 
+    /**
+     * http://localhost:8080/api/users/all
+     * */
     @RequestMapping (value ="all",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
 
     public ResponseEntity<BasicResponse> getAllUserInfo() throws Exception{

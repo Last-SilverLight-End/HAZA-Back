@@ -1,7 +1,7 @@
 package HAZAGroup.HAZACommunity.rest.board.model;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
+
 @Builder
 @Getter
 @Setter
@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 public class GenreMidCategoryVo {
 
     @NonNull
-    private int midCategory_Id;
+    private int mid_category_id;
 
     @NonNull
-    private int parentsCategory_Id;
+    private int parent_category_id;
 
     @NonNull
-    private String Name;
+    private String name;
 
 }

@@ -13,7 +13,7 @@ public class UserDao {
         return AllUserLists;
     }
 
-    public UserVo getUserToEmail(SqlSession sqlSession, String userId) throws Exception {
-        return sqlSession.selectOne("user.getUserToEmail", userId);
+    public UserVo getUserToEmail(SqlSession sqlSession, String id) throws Exception {
+        return sqlSession.selectOne("user.getUserToEmail", id);
     }
 }

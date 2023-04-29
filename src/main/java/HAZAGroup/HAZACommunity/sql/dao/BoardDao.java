@@ -22,8 +22,8 @@ public class BoardDao {
         return BoardLists;
     }
     // board mainCategory id lists
-    public List<BoardVo> getSpecificMainCategoryBoardLists(int main_Category_Id, SqlSession sqlSession) throws Exception{
-        List<BoardVo> BoardSpecificMainCategoryLists = sqlSession.selectList("board.getSpecificMainCategoryBoardLists",main_Category_Id);
+    public List<BoardVo> getSpecificMainCategoryBoardLists(int main_category_id, SqlSession sqlSession) throws Exception{
+        List<BoardVo> BoardSpecificMainCategoryLists = sqlSession.selectList("board.getSpecificMainCategoryBoardLists",main_category_id);
         return BoardSpecificMainCategoryLists;
     }
 
