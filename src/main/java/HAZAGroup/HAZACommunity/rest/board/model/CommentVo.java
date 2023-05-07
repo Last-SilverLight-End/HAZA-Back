@@ -10,9 +10,15 @@ import lombok.*;
 @NoArgsConstructor
 public class CommentVo {
     @NonNull
-    private int comment_id;
+    private int id;
+    @NonNull
+    private int main_category_id;
+    @NonNull
+    private int mid_category_id;
     @NonNull
     private String name;
+    @NonNull
+    private String email;
     @NonNull
     private String content;
     @NonNull
