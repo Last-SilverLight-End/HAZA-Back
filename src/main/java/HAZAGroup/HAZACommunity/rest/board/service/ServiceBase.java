@@ -12,12 +12,16 @@ public abstract class ServiceBase {
         this.logger = logger;
     }
     protected <D, T> T getWithDao(Function<D, FunctionThrowsException<SqlSession, T>> fn, D dao) throws Exception {
-        try (SqlSession sqlSession = new SqlSessionManager().getSqlSession()) {
+        SqlSession sqlSession = new SqlSessionManager().getSqlSession();
+        try {
             return fn.apply(dao).apply(sqlSession);
         } catch (Exception e) {
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
+        }
+        finally{
+            sqlSession.close();
         }
     }
 }

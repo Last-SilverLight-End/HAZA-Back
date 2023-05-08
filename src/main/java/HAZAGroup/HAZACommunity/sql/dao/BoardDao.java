@@ -36,7 +36,7 @@ public class BoardDao {
         return sqlSession.selectList("board.modifyBoardList", id);
     }
     // delete board
-    public String deleteBoardList(int id, SqlSession sqlSession) throws Exception {
+    public static String deleteBoardList(int id, SqlSession sqlSession) throws Exception {
         return sqlSession.selectList("board.deleteBoardList", id).toString();
     }
     // create board
