@@ -86,27 +86,27 @@
         <result property="title" column="BOARD_TITLE" />
         <result property="content" column="BOARD_CONTENT" />
         <result property="hit" column="BOARD_HIT" />
-        <result property="created_date" column="CREATED_DATE" />
-        <result property="modified_date" column="MODIFIED_DATE" />
-        <result property="user_id" column="USER_ID"/>
-        <result property="user_name" column="USER_NM" />
-        <result property="user_email" column="USER_EMAIL" />
-        <result property="main_category_id" column="B_MAIN_CATE_ID" />
-        <result property="mid_category_id" column="B_MID_CATE_ID" />
+        <result property="createdDate" column="CREATED_DATE" />
+        <result property="modifiedDate" column="MODIFIED_DATE" />
+        <result property="userId" column="USER_ID"/>
+        <result property="userName" column="USER_NM" />
+        <result property="userEmail" column="USER_EMAIL" />
+        <result property="mainCategoryId" column="B_MAIN_CATE_ID" />
+        <result property="midCategoryId" column="B_MID_CATE_ID" />
     </resultMap>
 
     <resultMap id="boardSpecificMap" type="HAZAGroup.HAZACommunity.rest.board.model.BoardVo">
-        <id property="board_id" column="BOARD_ID"/>
+        <id property="id" column="BOARD_ID"/>
         <result property="title" column="BOARD_TITLE" />
         <result property="content" column="BOARD_CONTENT" />
         <result property="hit" column="BOARD_HIT" />
-        <result property="created_date" column="CREATED_DATE" />
-        <result property="modified_date" column="MODIFIED_DATE" />
-        <result property="user_id" column="USER_ID"/>
-        <result property="user_name" column="USER_NM" />
-        <result property="user_email" column="USER_EMAIL" />
-        <result property="main_category_id" column="B_MAIN_CATE_ID" />
-        <result property="mid_category_id" column="B_MID_CATE_ID" />
+        <result property="createdDate" column="CREATED_DATE" />
+        <result property="modifiedDate" column="MODIFIED_DATE" />
+        <result property="userId" column="USER_ID"/>
+        <result property="userName" column="USER_NM" />
+        <result property="userEmail" column="USER_EMAIL" />
+        <result property="mainCategoryId" column="B_MAIN_CATE_ID" />
+        <result property="midCategoryId" column="B_MID_CATE_ID" />
     </resultMap>
 
 </mapper>

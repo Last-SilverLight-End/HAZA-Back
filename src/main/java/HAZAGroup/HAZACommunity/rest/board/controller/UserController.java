@@ -17,7 +17,6 @@ import java.util.List;
 @RequestMapping("api/users")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
-
     private final UserService userService;
     // 필드 인젝션 주입 방지
     public UserController(UserService userService) {
@@ -27,22 +26,18 @@ public class UserController {
     /**
      * http://localhost:8080/api/users/all
      * */
-    @RequestMapping (value ="all",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
-
-    public ResponseEntity<BasicResponse> getAllUserInfo() throws Exception{
-        CommonResponse<List<UserVo>> commonResponse;
-
-        try{
-            System.out.println("bring user info = ");
-            commonResponse = new CommonResponse<List<UserVo>>(userService.getAllUser());
+    @RequestMapping (value = "all", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public ResponseEntity<BasicResponse> getAllUserInfo() throws Exception {
+        try {
+            CommonResponse<List<UserVo>> commonResponse = new CommonResponse<>(userService.getAllUser());
             commonResponse.setStatus(200);
             System.out.println("finished ");
             return ResponseEntity.ok().body(commonResponse);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(" ERROR OCCURRED");
-            System.out.println(e.toString());
-            return ResponseEntity.internalServerError().body(new ErrorResponse("유저 정보 불러오기 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+            System.out.println(e);
+            return ResponseEntity.internalServerError()
+                .body(new ErrorResponse("유저 정보 불러오기 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
 }

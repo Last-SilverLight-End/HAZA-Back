@@ -13,14 +13,9 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @SpringBootApplication
-
-
 //@EnableAutoConfiguration(exclude = {SecurityAutoConfiguration.class})
 public class HazaCommunityApplication {
-
 	public static void main(String[] args) {
-
 		SpringApplication.run(HazaCommunityApplication.class, args);
 	}
-
 }

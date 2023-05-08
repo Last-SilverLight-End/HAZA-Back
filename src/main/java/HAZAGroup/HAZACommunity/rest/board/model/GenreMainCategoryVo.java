@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 public class GenreMainCategoryVo {
     @NonNull
-    private int main_category_id;
+    private int mainCategoryId;
     @NonNull
     private String name;
 }

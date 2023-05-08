@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 
 @Component
 public class GoogleOauth implements SocialOauth {
-
     Logger log = LoggerFactory.getLogger(GoogleOauth.class);
 
     @Value("${spring.security.oauth2.client.registration.google.uri}")
@@ -39,9 +38,8 @@ public class GoogleOauth implements SocialOauth {
     @Value("${spring.security.oauth2.client.registration.google.scope}")
     private String GOOGLE_DATA_ACCESS_SCOPE;
 
-
-    private RestTemplate restTemplate = new RestTemplate();
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final RestTemplate restTemplate = new RestTemplate();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * GOOGLE OAUTH 2.0 서버로 리디렉션할 URL 생성
@@ -91,28 +89,20 @@ public class GoogleOauth implements SocialOauth {
         params.put("grant_type", "authorization_code");
 
         // post 요청
-        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity(GOOGLE_TOKEN_REQUEST_URL, params, String.class);
-
-        return stringResponseEntity;
+        return restTemplate.postForEntity(GOOGLE_TOKEN_REQUEST_URL, params, String.class);
     }
 
     /**
      * Access Token 을 객체에 Mapping
-     *
-     * @param accessToken accessToken
-     * @return GoogleOAuthToken
-     * @throws JsonProcessingException
      */
     public GoogleOAuthToken getAccessToken(ResponseEntity<String> accessToken) throws JsonProcessingException {
         log.info("accessTokenBody: {}", accessToken.getBody());
-        GoogleOAuthToken googleOAuthToken = objectMapper.readValue(accessToken.getBody(), GoogleOAuthToken.class);
-        return googleOAuthToken;
+        return objectMapper.readValue(accessToken.getBody(), GoogleOAuthToken.class);
     }
 
     /**
      * GoogleOAuthToken 으로 Google API 를 사용해 로그인한 유저 정보 요청
      *
-     * @param googleOAuthToken GoogleOAuthToken
      * @return User Info
      */
     public ResponseEntity<String> requestUserInfo(GoogleOAuthToken googleOAuthToken) {
@@ -121,7 +111,7 @@ public class GoogleOauth implements SocialOauth {
         // 헤더 설정
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(headers);
-        headers.add("Authorization", "Bearer " + googleOAuthToken.getAccess_token());
+        headers.add("Authorization", "Bearer " + googleOAuthToken.getAccessToken());
 
         // get 요청
         ResponseEntity<String> exchange = restTemplate.exchange(GOOGLE_USERINFO_REQUEST_URL, HttpMethod.GET, request, String.class);
@@ -131,13 +121,8 @@ public class GoogleOauth implements SocialOauth {
 
     /**
      * 유저 정보를 객체에 Mapping
-     *
-     * @param userInfoResponse
-     * @return
-     * @throws JsonProcessingException
      */
     public GoogleUser getUserInfo(ResponseEntity<String> userInfoResponse) throws JsonProcessingException {
-        GoogleUser googleUser = objectMapper.readValue(userInfoResponse.getBody(), GoogleUser.class);
-        return googleUser;
+        return objectMapper.readValue(userInfoResponse.getBody(), GoogleUser.class);
     }
 }
