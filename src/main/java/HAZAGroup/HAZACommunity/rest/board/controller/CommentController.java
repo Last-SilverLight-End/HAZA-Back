@@ -17,9 +17,7 @@ import java.util.List;
 @Mapper
 @RequestMapping("/api/comments")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-
 public class CommentController {
-
     private final CommentService commentService;
 
     public CommentController(CommentService commentService) {
@@ -31,21 +29,16 @@ public class CommentController {
      * http://localhost:8080/api/comments/all
      */
 
-    @RequestMapping(value = "all", method = RequestMethod.GET, produces ="application/json;charset=UTF-8")
+    @RequestMapping(value = "all", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody
-    ResponseEntity<BasicResponse> getAllComments() throws Exception{
-        CommonResponse<List<CommentVo>> commonResponse;
+    ResponseEntity<BasicResponse> getAllComments() throws Exception {
         try{
-            commonResponse = new CommonResponse<>(commentService.getAllComment());
+            CommonResponse<List<CommentVo>> commonResponse = new CommonResponse<>(commentService.getAllComment());
             commonResponse.setStatus(200);
             return ResponseEntity.ok().body(commonResponse);
-        }
-
-        catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.internalServerError()
-                    .body(
-                            new ErrorResponse("코멘트 조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value());
-                    );
+                .body(new ErrorResponse("코멘트 조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
 }

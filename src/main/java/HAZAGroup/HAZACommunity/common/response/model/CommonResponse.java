@@ -13,26 +13,18 @@ public class CommonResponse<T> extends BasicResponse {
     private int status;
     private T data;
 
-
-
     public CommonResponse(T data) {
-
         this.data = data;
 
         System.out.println("data = " + data + " data type = " + data.getClass().getName());
-        if(data instanceof ArrayList) {
+        if (data instanceof ArrayList) {
             this.count = ((ArrayList<?>)data).size();
-        }
-
-        else if(data instanceof List) {
+        } else if (data instanceof List) {
             this.count = ((List<?>)data).size();
-        }
-
-        else if(data instanceof Integer){
+        } else if (data instanceof Integer) {
             int toInt = (int) data;
             this.count = toInt;
-        }
-        else {
+        } else {
             this.count = 1;
         }
     }
