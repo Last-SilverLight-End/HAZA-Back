@@ -30,25 +30,25 @@
     </select>
 
     <resultMap id="AllMainCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMainCategoryVo">
-        <id property="main_category_id" column="B_MAIN_CATE_ID"/>
+        <id property="mainCategoryId" column="B_MAIN_CATE_ID"/>
         <result property="name" column="MAIN_CATE_NAME"/>
     </resultMap>
 
     <resultMap id="AllMidCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMidCategoryVo">
-        <id property="mid_category_id" column="B_MID_CATE_ID"/>
-        <result property="parent_category_id" column="B_MAIN_CATE_ID"/>
+        <id property="midCategoryId" column="B_MID_CATE_ID"/>
+        <result property="parentCategoryId" column="B_MAIN_CATE_ID"/>
         <result property="name" column="MID_CATE_NAME"/>
     </resultMap>
 
     <resultMap id="MainCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMainCategoryVo">
-        <id property="main_category_id" column="B_MAIN_CATE_ID"/>
+        <id property="mainCategoryId" column="B_MAIN_CATE_ID"/>
         <result property="name" column="MAIN_CATE_NAME"/>
     </resultMap>
 
     <!--여기 고쳐야 한다. Mapped Statements collection does not contain value for category.getMidCategoryLists -->
     <resultMap id="MidCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMidCategoryVo">
-        <id property="mid_category_id" column="B_MID_CATE_ID"/>
-        <result property="parent_category_id" column="B_MAIN_CATE_ID"/>
+        <id property="midCategoryId" column="B_MID_CATE_ID"/>
+        <result property="parentCategoryId" column="B_MAIN_CATE_ID"/>
         <result property="name" column="MID_CATE_NAME"/>
 
     </resultMap>
