@@ -10,10 +10,10 @@ import lombok.*;
 public class GenreMidCategoryVo {
 
     @NonNull
-    private int mid_category_id;
+    private int midCategoryId;
 
     @NonNull
-    private int parent_category_id;
+    private int parentCategoryId;
 
     @NonNull
     private String name;

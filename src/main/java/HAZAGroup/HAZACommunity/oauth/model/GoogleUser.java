@@ -7,9 +7,6 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @Setter
 @Getter
-
-// GOOGLE API
-
 public class GoogleUser {
     public String id;
     public String email;
