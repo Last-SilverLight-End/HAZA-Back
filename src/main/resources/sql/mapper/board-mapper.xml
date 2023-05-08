@@ -82,7 +82,7 @@
     <!--보드 내용 변경들 update 대신 post 로 하는 편이 더 나을듯 -->
 
     <resultMap id="boardMap" type="HAZAGroup.HAZACommunity.rest.board.model.BoardVo">
-        <id property="board_id" column="BOARD_ID"/>
+        <id property="id" column="BOARD_ID"/>
         <result property="title" column="BOARD_TITLE" />
         <result property="content" column="BOARD_CONTENT" />
         <result property="hit" column="BOARD_HIT" />
