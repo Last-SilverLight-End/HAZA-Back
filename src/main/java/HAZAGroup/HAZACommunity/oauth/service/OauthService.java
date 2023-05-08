@@ -18,7 +18,6 @@ import java.io.IOException;
 @Service
 @RequiredArgsConstructor
 public class OauthService {
-
     Logger log = LoggerFactory.getLogger(OauthService.class);
 
     @Autowired
@@ -31,8 +30,7 @@ public class OauthService {
     public String request(String type) throws IOException {
         switch (type) {
             case "GOOGLE":
-                String redirectURL = googleOauth.getOauthRedirectURL();
-                return redirectURL;
+                return googleOauth.getOauthRedirectURL();
             case "KAKAO":
                 break;
             case "NAVER":
@@ -44,7 +42,6 @@ public class OauthService {
     }
 
     public GetSocialOAuthRes oAuthLogin(String code) throws JsonProcessingException {
-
         try {
             // Access Token 발급
             ResponseEntity<String> accessToken = googleOauth.requestAccessToken(code);
@@ -58,11 +55,11 @@ public class OauthService {
 
             log.info("GoogleUser: {}", googleUser);
 
-            String user_id = googleUser.getEmail();
+            String userId = googleUser.getEmail();
 
             // 1. user validation And get UserId
 
-            UserVo userVo = userService.getUserToEmail(user_id);
+            UserVo userVo = userService.getUserToEmail(userId);
 
             // 2. jwt token 생성
 
@@ -70,7 +67,7 @@ public class OauthService {
 
             // 3. GetSocialOAuthRes 객체 리턴
 
-            return new GetSocialOAuthRes(jwtToken, userVo.getId(), googleOAuthToken.getAccess_token(), googleOAuthToken.getToken_type());
+            return new GetSocialOAuthRes(jwtToken, userVo.getId(), googleOAuthToken.getAccessToken(), googleOAuthToken.getTokenType());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             throw e;
@@ -79,5 +76,4 @@ public class OauthService {
             return null;
         }
     }
-
 }

@@ -12,9 +12,9 @@ public class CommentVo {
     @NonNull
     private int id;
     @NonNull
-    private int main_category_id;
+    private int mainCategoryId;
     @NonNull
-    private int mid_category_id;
+    private int midCategoryId;
     @NonNull
     private String name;
     @NonNull
@@ -22,7 +22,7 @@ public class CommentVo {
     @NonNull
     private String content;
     @NonNull
-    private String created_date;
+    private String createdDate;
     @NonNull
-    private String modified_date;
+    private String modifiedDate;
 }
