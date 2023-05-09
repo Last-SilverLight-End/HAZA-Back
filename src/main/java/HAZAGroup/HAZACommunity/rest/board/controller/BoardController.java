@@ -24,7 +24,28 @@ public class BoardController {
         this.boardService = boardService;
     }
 
-    //http://localhost:8080/api/boards/all
+
+    //http://localhost:8080/api/boards
+    @RequestMapping(value="", method=RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public @ResponseBody
+    String ResponseEntity(@RequestBody BoardVo boardVo) throws Exception{
+        try{
+            CommonResponse<String> commonResponse = new CommonResponse<>(boardService.insertBoard(boardVo));
+            commonResponse.setStatus(200);
+
+            return ResponseEntity.ok().body(commonResponse).toString();
+        }
+        catch( Exception e ){
+            return ResponseEntity.internalServerError()
+                    .body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value())).toString();
+        }
+    }
+
+    /**
+     *
+     * board list 전체 출력
+     * http://localhost:8080/api/boards/all
+    */
     @RequestMapping(value ="all", method = {RequestMethod.OPTIONS, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public ResponseEntity<BasicResponse> getDrawingInform() throws Exception {
         System.out.println("this is all id");
@@ -35,7 +56,7 @@ public class BoardController {
         } catch (Exception e) {
             // 임시 예외처리 향후 Exception별로 구현 필요
             return ResponseEntity.internalServerError()
-                .body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+                    .body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
     /**
@@ -53,7 +74,7 @@ public class BoardController {
         } catch (Exception e) {
             // 임시 예외처리 향후 Exception별로 구현 필요
             return ResponseEntity.internalServerError()
-                .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+                    .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
     /**
@@ -72,7 +93,7 @@ public class BoardController {
         } catch (Exception e) {
             // 임시 예외처리 향후 Exception별로 구현 필요
             return ResponseEntity.internalServerError()
-                .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+                    .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
     /**
@@ -93,7 +114,7 @@ public class BoardController {
         } catch (Exception e) {
             // 임시 예외처리 향후 Exception별로 구현 필요
             return ResponseEntity.internalServerError()
-                .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+                    .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
 }
