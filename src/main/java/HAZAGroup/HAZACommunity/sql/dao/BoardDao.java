@@ -40,5 +40,9 @@ public class BoardDao {
         return sqlSession.selectList("board.deleteBoardList", id).toString();
     }
     // create board
+    public static int insertBoardList(BoardVo boardVo,SqlSession sqlSession) throws Exception{
+        return sqlSession.insert("board.insertBoardList",boardVo);
+    }
+
 
 }
