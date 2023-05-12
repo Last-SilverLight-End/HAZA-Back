@@ -4,6 +4,7 @@
     <!--mapper에서 매칭할 parmeter Type 별칭 설정-->
     <typeAliases>
         <typeAlias alias="userMap" type="HAZAGroup.HAZACommunity.rest.board.model.UserVo"/>
+        <typeAlias alias="BoardVoMap" type="HAZAGroup.HAZACommunity.rest.board.model.BoardVo"/>
     </typeAliases>
 
 
@@ -17,8 +18,8 @@
                 <!--mysql server 생성 후 변경 필요-->
                 <property name="url"
                           value="jdbc:mysql://aws.connect.psdb.cloud/devhaza?sslMode=VERIFY_IDENTITY"/>
-                <property name="username" value="vq0ek65uhxfwjbv07xz8"/>
-                <property name="password" value="pscale_pw_j7dHu9ykWMcD1nxA2jsh6D4BNTCR3QI5NBypPDs27EH"/>
+                <property name="username" value="bdtad90zi5lqmuvkgrz4"/>
+                <property name="password" value="pscale_pw_dmN4Edjg7JdSKpFf2CGWeXuNV6qOL77iF4qidFdE918"/>
             </dataSource>
         </environment>
 
