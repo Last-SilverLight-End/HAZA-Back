@@ -5,6 +5,7 @@ import HAZAGroup.HAZACommunity.common.response.model.CommonResponse;
 import HAZAGroup.HAZACommunity.common.response.model.ErrorResponse;
 import HAZAGroup.HAZACommunity.rest.board.model.BoardVo;
 import HAZAGroup.HAZACommunity.rest.board.service.BoardService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @Mapper
+@Slf4j
 @RequestMapping("/api/boards")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class BoardController {
@@ -26,27 +28,26 @@ public class BoardController {
 
 
     //http://localhost:8080/api/boards/push
-    @PostMapping(value="push", produces = "application/json;charset=UTF-8")
-    public @ResponseBody
-    String ResponseEntity(@RequestBody BoardVo boardVo) throws Exception{
-        try{
+    @PostMapping(value = "push", produces = "application/json;charset=UTF-8")
+    public String ResponseEntity(@RequestBody BoardVo boardVo) throws Exception {
+        try {
+            log.info(boardVo.getTitle());
             CommonResponse<String> commonResponse = new CommonResponse<>(boardService.insertBoard(boardVo));
             commonResponse.setStatus(200);
 
             return ResponseEntity.ok().body(commonResponse).toString();
-        }
-        catch( Exception e ){
+        } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.internalServerError()
                     .body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value())).toString();
         }
     }
 
     /**
-     *
      * board list 전체 출력
      * http://localhost:8080/api/boards/all
      */
-    @RequestMapping(value ="all", method = {RequestMethod.OPTIONS, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "all", method = {RequestMethod.OPTIONS, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public ResponseEntity<BasicResponse> getDrawingInform() throws Exception {
         System.out.println("this is all id");
         try {
@@ -59,6 +60,7 @@ public class BoardController {
                     .body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
+
     /**
      * 메인 카테고리에 맞는 board list 출력
      * http://localhost:8080/api/boards?main_category_id=3
@@ -77,6 +79,7 @@ public class BoardController {
                     .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
+
     /**
      * http://localhost:8080/api/boards?id=3
      * 특정 id 보드 반환
@@ -96,9 +99,11 @@ public class BoardController {
                     .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
+
     /**
      * http://localhost:8080/api/boards?id=3
      * 특정 id 보드 삭제
+     *
      * @return 삭제 완료 여부 반환
      */
     @RequestMapping(produces = "application/json;charset=UTF-8", method = RequestMethod.DELETE, params = "id")
