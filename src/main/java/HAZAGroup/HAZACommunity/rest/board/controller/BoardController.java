@@ -25,8 +25,8 @@ public class BoardController {
     }
 
 
-    //http://localhost:8080/api/boards
-    @RequestMapping(value="", method=RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    //http://localhost:8080/api/boards/push
+    @PostMapping(value="push", produces = "application/json;charset=UTF-8")
     public @ResponseBody
     String ResponseEntity(@RequestBody BoardVo boardVo) throws Exception{
         try{
@@ -45,7 +45,7 @@ public class BoardController {
      *
      * board list 전체 출력
      * http://localhost:8080/api/boards/all
-    */
+     */
     @RequestMapping(value ="all", method = {RequestMethod.OPTIONS, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public ResponseEntity<BasicResponse> getDrawingInform() throws Exception {
         System.out.println("this is all id");
