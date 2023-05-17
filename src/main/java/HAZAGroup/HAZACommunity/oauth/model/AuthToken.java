@@ -11,7 +11,6 @@ import java.util.Date;
 @Slf4j
 @RequiredArgsConstructor
 public class AuthToken {
-
     private static final String AUTHORITIES_KEY = "role";
     @Getter
     private final String token;
@@ -20,29 +19,20 @@ public class AuthToken {
 
     AuthToken(String id, Date expiry, Key key) {
         this.key = key;
-        this.token = createAuthToken(id, expiry);
+        this.token = Jwts.builder()
+            .setSubject(id)
+            .signWith(key, SignatureAlgorithm.HS256)
+            .setExpiration(expiry)
+            .compact();
     }
-
     AuthToken(String id, String role, Date expiry, Key key) {
         this.key = key;
-        this.token = createAuthToken(id, role, expiry);
-    }
-
-    private String createAuthToken(String id, Date expiry) {
-        return Jwts.builder()
-                .setSubject(id)
-                .signWith(key, SignatureAlgorithm.HS256)
-                .setExpiration(expiry)
-                .compact();
-    }
-
-    private String createAuthToken(String id, String role, Date expiry) {
-        return Jwts.builder()
-                .setSubject(id)
-                .claim(AUTHORITIES_KEY, role)
-                .signWith(key, SignatureAlgorithm.HS256)
-                .setExpiration(expiry)
-                .compact();
+        this.token = Jwts.builder()
+            .setSubject(id)
+            .claim(AUTHORITIES_KEY, role)
+            .signWith(key, SignatureAlgorithm.HS256)
+            .setExpiration(expiry)
+            .compact();
     }
 
     public boolean validate() {

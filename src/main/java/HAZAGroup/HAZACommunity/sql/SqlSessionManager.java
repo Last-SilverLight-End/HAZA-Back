@@ -13,12 +13,11 @@ public class SqlSessionManager {
     public static final String RESOURCE = "sql/mybatis-config.xml";
     private static final Logger logger = LoggerFactory.getLogger(SqlSessionManager.class);
 
-    public SqlSession getSqlSession() throws Exception{
+    public SqlSession getSqlSession() throws Exception {
         SqlSession sqlSession = null;
         try {
             InputStream is = Resources.getResourceAsStream(RESOURCE);
-            SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-            SqlSessionFactory factory = builder.build(is);
+            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(is);
             sqlSession = factory.openSession(true);
             // openSession 이라는메소드는 세션을 가져오는 메소드
             // 세션을 생성하고 가져올때,
