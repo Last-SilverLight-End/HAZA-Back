@@ -29,5 +29,5 @@ public class BoardVo {
 
     private String mainCategoryId;
     private String midCategoryId;
-<<<<<<< HEAD
+
 }
