@@ -23,7 +23,8 @@ public class SqlSessionManager {
             // 세션을 생성하고 가져올때,
             // 인자 값 true 혹은 빈 인자값 : AutoCommit이 활성화된 상태
             // 인자 값 false: AutoCommit을 비활성화된 상태
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             logger.error(e.getMessage());
         }
         return sqlSession;

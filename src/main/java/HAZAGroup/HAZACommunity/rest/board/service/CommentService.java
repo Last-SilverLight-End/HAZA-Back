@@ -22,7 +22,8 @@ public class CommentService {
             sqlSession = sqlSessionManager.getSqlSession();
 
             return commentDao.getCommentLists(sqlSession);
-        }catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;

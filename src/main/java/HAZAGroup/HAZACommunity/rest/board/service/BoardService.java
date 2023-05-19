@@ -27,7 +27,8 @@ public class BoardService {
             System.out.println("sqlSessionManager = " + sqlSessionManager);
             System.out.println("sqlSession = " + sqlSession);
             return boardDao.getBoardLists(sqlSession);
-        }catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
@@ -45,7 +46,8 @@ public class BoardService {
             sqlSession = sqlSessionManager.getSqlSession();
 
             return boardDao.getSpecificMainCategoryBoardLists(main_category_id,sqlSession);
-        }catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
@@ -62,7 +64,8 @@ public class BoardService {
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             sqlSession = sqlSessionManager.getSqlSession();
             return boardDao.getSpecificBoardLists(id,sqlSession);
-        }catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
@@ -73,16 +76,18 @@ public class BoardService {
     }
 
     // 특정 id 보드 삭제
-    public String getDeleteBoardStatus(Integer id) throws Exception {
+    public String deleteBoard(Integer id) throws Exception {
         System.out.println("service id = " + id);
         try {
             BoardDao boardDao = new BoardDao();
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             sqlSession = sqlSessionManager.getSqlSession();
             String responseString ="";
-            responseString = BoardDao.deleteBoardList(id,sqlSession);
+
+            responseString = 0 < BoardDao.deleteBoardList(id, sqlSession) ? "complete" : "error";
             return responseString;
-        }catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
@@ -102,7 +107,28 @@ public class BoardService {
 
             responseString = 0 < BoardDao.insertBoardList(boardVo, sqlSession) ? "complete" : "error";
             return responseString;
-        }catch (Exception e){
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            logger.error(e.getMessage());
+            throw e;
+        }
+        finally {
+            sqlSession.close();
+        }
+    }
+    public String modifyBoard(BoardVo boardVo) throws Exception{
+        System.out.println(" start modifying" + boardVo);
+        try{
+            BoardDao boardDao = new BoardDao();
+            SqlSessionManager sqlSessionManager = new SqlSessionManager();
+            sqlSession = sqlSessionManager.getSqlSession();
+            String responseString ="";
+
+            responseString = 0 < BoardDao.modifyBoardList(boardVo, sqlSession) ? "complete" : "error";
+            return responseString;
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;

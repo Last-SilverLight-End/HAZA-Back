@@ -68,10 +68,12 @@ public class OauthService {
             // 3. GetSocialOAuthRes 객체 리턴
 
             return new GetSocialOAuthRes(jwtToken, userVo.getId(), googleOAuthToken.getAccessToken(), googleOAuthToken.getTokenType());
-        } catch (JsonProcessingException e) {
+        }
+        catch (JsonProcessingException e) {
             e.printStackTrace();
             throw e;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
             return null;
         }

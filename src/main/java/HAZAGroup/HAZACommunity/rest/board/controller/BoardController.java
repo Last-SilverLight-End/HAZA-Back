@@ -27,9 +27,9 @@ public class BoardController {
 
     //http://localhost:8080/api/boards/push
     @PostMapping(value = "push", produces = "application/json;charset=UTF-8")
-    public String ResponseEntity(@RequestBody BoardVo boardVo) throws Exception {
+    public String pushInform(@RequestBody BoardVo boardVo) throws Exception {
         try {
-            log.info(boardVo.getTitle());
+            System.out.println("boardVo = " + boardVo.getTitle());
             CommonResponse<String> commonResponse = new CommonResponse<>(boardService.insertBoard(boardVo));
             commonResponse.setStatus(200);
 
@@ -54,7 +54,8 @@ public class BoardController {
             CommonResponse<List<BoardVo>> commonResponse = new CommonResponse<>(boardService.getBoardStatus());
             commonResponse.setStatus(200);
             return ResponseEntity.ok().body(commonResponse);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             // 임시 예외처리 향후 Exception별로 구현 필요
             return ResponseEntity.internalServerError()
                     .body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
@@ -62,7 +63,7 @@ public class BoardController {
     }
     /**
      * 메인 카테고리에 맞는 board list 출력
-     * http://localhost:8080/api/boards?main_category_id=3
+     * http://localhost:8080/api/boards?mainCategoryId=3
      */
     @RequestMapping(produces = "application/json;charset=UTF-8", method = RequestMethod.GET, params = "mainCategoryId")
     public ResponseEntity<BasicResponse> getSpecificMainCategory(@RequestParam("mainCategoryId") Integer mainCategoryId) throws Exception {
@@ -71,7 +72,8 @@ public class BoardController {
             CommonResponse<List<BoardVo>> commonResponse = new CommonResponse<>(boardService.getSpecificMainCategoryBoard(mainCategoryId));
             commonResponse.setStatus(200);
             return ResponseEntity.ok().body(commonResponse);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             // 임시 예외처리 향후 Exception별로 구현 필요
             return ResponseEntity.internalServerError()
                     .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
@@ -90,7 +92,8 @@ public class BoardController {
             CommonResponse<List<BoardVo>> commonResponse = new CommonResponse<>(boardService.getSpecificStatus(id));
             commonResponse.setStatus(200);
             return ResponseEntity.ok().body(commonResponse);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             // 임시 예외처리 향후 Exception별로 구현 필요
             return ResponseEntity.internalServerError()
                     .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
@@ -106,15 +109,35 @@ public class BoardController {
         System.out.println("id = " + id);
 
         try {
-            CommonResponse<String> commonResponse = new CommonResponse<>(boardService.getDeleteBoardStatus(id));
+            CommonResponse<String> commonResponse = new CommonResponse<>(boardService.deleteBoard(id));
             commonResponse.setStatus(200);
             System.out.println("result is = " + commonResponse);
             System.out.println("delete completed  ");
             return ResponseEntity.ok().body(commonResponse);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             // 임시 예외처리 향후 Exception별로 구현 필요
             return ResponseEntity.internalServerError()
-                    .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+                    .body(new ErrorResponse("게시판 상세내용 삭제 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        }
+    }
+    /**
+     * http://localhost:8080/api/boards/modify
+     * 보드 수정하는 api
+     */
+    @PostMapping(value = "modify", produces = "application/json;charset=UTF-8")
+    public String modifyInform(@RequestBody BoardVo boardVo) throws Exception {
+        try {
+            System.out.println("boardVo = " + boardVo.getTitle());
+            CommonResponse<String> commonResponse = new CommonResponse<>(boardService.modifyBoard(boardVo));
+            commonResponse.setStatus(200);
+
+            return ResponseEntity.ok().body(commonResponse).toString();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError()
+                    .body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value())).toString();
         }
     }
 }
