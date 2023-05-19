@@ -36,7 +36,8 @@ public class CategoryController {
             CommonResponse<List<GenreMainCategoryVo>> commonResponse = new CommonResponse<>(categoryService.getAllMainCategory());
             commonResponse.setStatus(200);
             return ResponseEntity.ok().body(commonResponse);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return ResponseEntity.internalServerError()
                 .body(new ErrorResponse("조회 실패",HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
@@ -52,7 +53,8 @@ public class CategoryController {
             CommonResponse<List<GenreMidCategoryVo>> commonResponse = new CommonResponse<>(categoryService.getAllMidCategory());
             commonResponse.setStatus(200);
             return ResponseEntity.ok().body(commonResponse);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return ResponseEntity.internalServerError()
                 .body(new ErrorResponse("조회 실패",HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }

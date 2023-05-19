@@ -33,7 +33,8 @@ public class UserController {
             commonResponse.setStatus(200);
             System.out.println("finished ");
             return ResponseEntity.ok().body(commonResponse);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println(" ERROR OCCURRED");
             System.out.println(e);
             return ResponseEntity.internalServerError()

@@ -36,7 +36,8 @@ public class CommentController {
             CommonResponse<List<CommentVo>> commonResponse = new CommonResponse<>(commentService.getAllComment());
             commonResponse.setStatus(200);
             return ResponseEntity.ok().body(commonResponse);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return ResponseEntity.internalServerError()
                 .body(new ErrorResponse("코멘트 조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }

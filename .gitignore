@@ -15,6 +15,7 @@ build/
 .springBeans
 .sts4-cache
 !**/src/main/java/resources/application.yml
+!**/src/main/resources/sql/mybatis-config.xml
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
