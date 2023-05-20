@@ -52,7 +52,7 @@ public class OauthController {
     @GetMapping("/code/{type}")
     public ResponseEntity<BasicResponse> getAuthorizationCode(
             @PathVariable(value = "type") String type, @RequestParam(value = "code") String code) throws JsonProcessingException {
-        // TODO: platform type 별로 분기 처리
+        //  TODO: platform type 별로 분기 처리
         GetSocialOAuthRes response = oauthService.oAuthLogin(code);
         return new ResponseEntity<>(new CommonResponse<>(response.getJwtToken()), HttpStatus.OK);
     }

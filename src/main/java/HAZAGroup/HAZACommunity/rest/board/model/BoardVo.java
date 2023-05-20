@@ -10,27 +10,25 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 public class BoardVo {
-    @NonNull
-    private int board_id;
-    @NonNull
+
+    private int id;
+
     private String title;
-    @NonNull
+
     private String content;
-    @NonNull
+
     private int hit;
-    @NonNull
-    private String created_date;
-    @NonNull
-    private String modified_date;
-    @NonNull
-    private int user_id;
-    @NonNull
-    private String user_name;
-    @NonNull
-    private String user_email;
 
-    private String main_Category_Id;
-    private String mid_Category_Id;
+    private String createdDate;
 
+    private String modifiedDate;
 
+    private int userId;
+
+    private String userName;
+    @NonNull
+    private String userEmail;
+
+    private String mainCategoryId;
+    private String midCategoryId;
 }

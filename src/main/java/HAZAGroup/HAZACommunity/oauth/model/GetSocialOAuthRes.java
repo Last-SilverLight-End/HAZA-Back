@@ -1,4 +1,5 @@
 package HAZAGroup.HAZACommunity.oauth.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class GetSocialOAuthRes {
     private String jwtToken;
-    private int user_num;
+    private int userNum;
     private String accessToken;
     private String tokenType;
 }

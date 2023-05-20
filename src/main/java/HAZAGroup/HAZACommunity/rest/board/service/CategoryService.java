@@ -18,6 +18,36 @@ public class CategoryService {
     Logger logger = LoggerFactory.getLogger(CategoryService.class);
     SqlSession sqlSession = null;
 
+    public List<GenreMainCategoryVo> getAllMainCategory() throws Exception {
+        try{
+            CategoryDao categoryDao = new CategoryDao();
+            SqlSessionManager sqlSessionManager = new SqlSessionManager();
+            sqlSession = sqlSessionManager.getSqlSession();
+
+            return categoryDao.getAllMainCategoryLists(sqlSession);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            logger.error(e.getMessage());
+            throw e;
+        }
+    }
+
+    public List<GenreMidCategoryVo> getAllMidCategory() throws Exception {
+        try{
+            CategoryDao categoryDao = new CategoryDao();
+            SqlSessionManager sqlSessionManager = new SqlSessionManager();
+            sqlSession = sqlSessionManager.getSqlSession();
+
+            return categoryDao.getAllMidCategoryLists(sqlSession);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            logger.error(e.getMessage());
+            throw e;
+        }
+    }
+
     public List<GenreMainCategoryVo> getMainCategoryStatus(Map<String, Object> map) throws Exception{
 
         try{
@@ -27,7 +57,8 @@ public class CategoryService {
 
             return categoryDao.getMainCategoryLists(map,sqlSession);
 
-        } catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
@@ -46,7 +77,8 @@ public class CategoryService {
 
             return categoryDao.getMidCategoryLists(map,sqlSession);
 
-        } catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
