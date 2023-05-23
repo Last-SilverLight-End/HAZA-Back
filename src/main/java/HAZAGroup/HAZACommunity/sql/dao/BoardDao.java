@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class BoardDao {
@@ -31,6 +32,11 @@ public class BoardDao {
         System.out.println("mainCategoryId = " + mainCategoryId);
         return sqlSession.selectList("board.getSpecificMainCategoryBoardLists", mainCategoryId);
     }
+    //board specific mainCategory for midCategory board lists
+    public List<BoardVo>getSpecificMidAllCategoryBoardLists(Map<String, Object> map,SqlSession sqlSession) throws Exception{
+        System.out.println("map = " + map);
+        return sqlSession.selectList("board.getSpecificMidAllCategoryBoardLists",map);
+    }
 
     // board detail id
     public List<BoardVo> getSpecificBoardLists(int id, SqlSession sqlSession) throws Exception {
@@ -45,8 +51,14 @@ public class BoardDao {
     }
 
     // modify board
-    public List<BoardVo> modifyBoardList(int id, SqlSession sqlSession) throws Exception {
+    public static int modifyBoardList(BoardVo boardVo, SqlSession sqlSession) throws Exception {
+        System.out.println("boardVo = " + boardVo);
+        return sqlSession.insert("board.modifyBoardList", boardVo);
+    }
+
+    // modifyBoard id
+    public int modifydfdBoardList(int id, SqlSession sqlSession) throws Exception {
         System.out.println("id = " + id);
-        return sqlSession.selectList("board.modifyBoardList", id);
+        return sqlSession.insert("board.getDeleteBoard", id);
     }
 }

@@ -3,26 +3,28 @@ package HAZAGroup.HAZACommunity.rest.board.model;
 
 import lombok.*;
 
-@Builder
 @Getter
 @Setter
 @RequiredArgsConstructor
-@NoArgsConstructor
 public class CommentVo {
-    @NonNull
+
     private int id;
-    @NonNull
+
     private int mainCategoryId;
-    @NonNull
+
     private int midCategoryId;
-    @NonNull
-    private String name;
-    @NonNull
-    private String email;
-    @NonNull
+
+    private int userId;
+
+    private String userName;
+
+    private String userEmail;
+
+    private int boardId;
+
     private String content;
-    @NonNull
+
     private String createdDate;
-    @NonNull
+
     private String modifiedDate;
 }
