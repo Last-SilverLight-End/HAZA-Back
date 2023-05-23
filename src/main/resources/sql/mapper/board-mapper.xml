@@ -63,7 +63,7 @@
         FROM TB_BOARD where BOARD_ID = #{id};
     </select>
     <!--보드 삭제 -->
-    <delete id="getDeleteBoard">
+    <delete id="getDeleteBoard" parameterType="int" >
         DELETE FROM TB_BOARD
         WHERE BOARD_ID = #{id};
     </delete>
@@ -95,9 +95,10 @@
     </insert>
 
     <!-- 보드 수정 -->
-    <update id="modifyBoardList">
-        update TB_BOARD
-        set BOARD_TITLE = {}
+    <update id="modifyBoardList" parameterType="BoardVoMap" keyProperty="id">
+        UPDATE TB_BOARD
+        SET BOARD_TITLE = #{title}, BOARD_CONTENT=#{content}, BOARD_HIT = #{hit}, MODIFIED_DATE = #{modifiedDate}
+        WHERE id = #{id}
     </update>
 
 

@@ -15,7 +15,8 @@ public abstract class ServiceBase {
         SqlSession sqlSession = new SqlSessionManager().getSqlSession();
         try {
             return fn.apply(dao).apply(sqlSession);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;

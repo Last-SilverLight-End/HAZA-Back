@@ -81,11 +81,13 @@ public class CategoryController {
                 commonResponse = new CommonResponse<>(categoryService.getMidCategoryStatus(map));
                 commonResponse.setStatus(200);
                 return ResponseEntity.ok().body(commonResponse);
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 return ResponseEntity.internalServerError()
                     .body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
             }
-        } else { // http://localhost:8080/api/categories?main=Movie
+        }
+        else{ // http://localhost:8080/api/categories?main=Movie
             try{
                 CommonResponse<List<GenreMainCategoryVo>> commonResponse = new CommonResponse<>(categoryService.getMainCategoryStatus(map));
                 commonResponse.setStatus(200);

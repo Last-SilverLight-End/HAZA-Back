@@ -28,7 +28,8 @@ public class UserService {
             sqlSession = sqlSessionManager.getSqlSession();
 
             return  userDao.getUserList(sqlSession);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
@@ -41,10 +42,12 @@ public class UserService {
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             SqlSession sqlSession = sqlSessionManager.getSqlSession();
             return userDao.getUserToEmail(sqlSession, id);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
             throw e;
-        } finally {
+        }
+        finally {
 
         }
     }

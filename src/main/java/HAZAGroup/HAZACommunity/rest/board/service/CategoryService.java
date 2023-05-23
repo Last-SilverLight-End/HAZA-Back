@@ -25,7 +25,8 @@ public class CategoryService {
             sqlSession = sqlSessionManager.getSqlSession();
 
             return categoryDao.getAllMainCategoryLists(sqlSession);
-        } catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
@@ -39,7 +40,8 @@ public class CategoryService {
             sqlSession = sqlSessionManager.getSqlSession();
 
             return categoryDao.getAllMidCategoryLists(sqlSession);
-        } catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
@@ -55,7 +57,8 @@ public class CategoryService {
 
             return categoryDao.getMainCategoryLists(map,sqlSession);
 
-        } catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
@@ -74,7 +77,8 @@ public class CategoryService {
 
             return categoryDao.getMidCategoryLists(map,sqlSession);
 
-        } catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;

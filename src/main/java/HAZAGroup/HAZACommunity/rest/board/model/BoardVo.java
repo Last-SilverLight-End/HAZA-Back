@@ -2,6 +2,7 @@ package HAZAGroup.HAZACommunity.rest.board.model;
 
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
@@ -25,9 +26,9 @@ public class BoardVo {
     private int userId;
 
     private String userName;
+    @NonNull
     private String userEmail;
 
     private String mainCategoryId;
     private String midCategoryId;
-
 }
