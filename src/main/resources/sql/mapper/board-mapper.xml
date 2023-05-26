@@ -39,10 +39,30 @@
 
         ,TB_BOARD.B_MAIN_CATE_ID AS B_MAIN_CATE_ID
         ,TB_BOARD.B_MID_CATE_ID AS B_MID_CATE_ID
-        FROM TB_BOARD where B_MAIN_CATE_ID = #{main_Category_Id};
+        FROM TB_BOARD where B_MAIN_CATE_ID = #{mainCategoryId};
 
     </select>
+    <!-- 메인 카테고리 내 미드 카테고리 전체 보드 리스트들 불러오기 -->
+    <select id="getSpecificMidAllCategoryBoardLists" resultMap="boardSpecificMap" parameterType="HashMap">
+        SELECT
+        TB_BOARD.BOARD_ID AS BOARD_ID
+        ,TB_BOARD.BOARD_TITLE AS BOARD_TITLE
+        ,TB_BOARD.BOARD_CONTENT AS BOARD_CONTENT
+        ,TB_BOARD.BOARD_HIT AS BOARD_HIT
 
+        ,TB_BOARD.CREATED_DATE AS CREATED_DATE
+        ,TB_BOARD.MODIFIED_DATE AS MODIFIED_DATE
+
+        ,TB_BOARD.USER_ID AS USER_ID
+        ,TB_BOARD.USER_NM AS USER_NM
+        ,TB_BOARD.USER_EMAIL AS USER_EMAIL
+
+        ,TB_BOARD.B_MAIN_CATE_ID AS B_MAIN_CATE_ID
+        ,TB_BOARD.B_MID_CATE_ID AS B_MID_CATE_ID
+        FROM TB_BOARD where B_MAIN_CATE_ID = #{mainCategoryId}
+        AND B_MID_CATE_ID = #{midCategoryId};
+
+    </select>
     <!--id를 통한 특정 보드 리스트 불러오기 -->
     <select id="getSpecificBoardLists" resultMap="boardSpecificMap" parameterType="int">
         SELECT
@@ -67,25 +87,7 @@
         DELETE FROM TB_BOARD
         WHERE BOARD_ID = #{id};
     </delete>
-    <!-- 보드 생성 는 나중에 넣을지 생각 -->
-    <!--<select id="insertBoardList" resultMap="boardSpecificMap" parameterType="int">
-        SELECT
-        TB_BOARD.BOARD_ID AS BOARD_ID
-        ,TB_BOARD.BOARD_TITLE AS BOARD_TITLE
-        ,TB_BOARD.BOARD_CONTENT AS BOARD_CONTENT
-        ,TB_BOARD.BOARD_HIT AS BOARD_HIT
-
-        ,TB_BOARD.CREATED_DATE AS CREATED_DATE
-        ,TB_BOARD.MODIFIED_DATE AS MODIFIED_DATE
-
-        ,TB_BOARD.USER_ID AS USER_ID
-        ,TB_BOARD.USER_NM AS USER_NM
-        ,TB_BOARD.USER_EMAIL AS USER_EMAIL
-
-        ,TB_BOARD.B_MAIN_CATE_ID AS B_MAIN_CATE_ID
-        ,TB_BOARD.B_MID_CATE_ID AS B_MID_CATE_ID
-        FROM TB_BOARD where BOARD_ID = #{id};
-    </select>-->
+    <!-- 보드 생성 -->
     <insert id="insertBoardList" parameterType="BoardVoMap"
             useGeneratedKeys="true" keyProperty="id">
         INSERT INTO TB_BOARD (BOARD_TITLE, BOARD_CONTENT, BOARD_HIT, CREATED_DATE, MODIFIED_DATE, USER_ID, USER_NM,

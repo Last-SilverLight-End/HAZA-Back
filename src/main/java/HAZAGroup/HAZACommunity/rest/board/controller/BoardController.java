@@ -17,7 +17,6 @@ import java.util.Map;
 
 @RestController
 @Mapper
-@Slf4j
 @RequestMapping("/api/boards")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class BoardController {
@@ -29,11 +28,17 @@ public class BoardController {
     }
 
 
-    //http://localhost:8080/api/boards/push
+    /**
+     *
+     * boardlist 입력
+     * http://localhost:8080/api/boards/push
+     *
+     */
+
     @PostMapping(value = "push", produces = "application/json;charset=UTF-8")
     public String ResponseEntity(@RequestBody BoardVo boardVo) throws Exception {
         try {
-            log.info(boardVo.getTitle());
+            System.out.println("boardVo = " + boardVo);
             CommonResponse<String> commonResponse = new CommonResponse<>(boardService.insertBoard(boardVo));
             commonResponse.setStatus(200);
 
@@ -70,15 +75,15 @@ public class BoardController {
      * 메인 카테고리 내 미드 카테고리의 모든 board list 출력
      *  http://localhost:8080/api/boards?mainCategoryId=1&midCategoryId=1
      */
-    @RequestMapping(produces = "application/json;charset=UTF-8", method = RequestMethod.GET)
+    @RequestMapping(produces = "application/json;charset=UTF-8", method = RequestMethod.GET,params = {"mainCategoryId","midCategoryId"})
     public ResponseEntity<BasicResponse> getSpecificMidAllInform(@RequestParam("mainCategoryId") int main,
                                                                  @RequestParam("midCategoryId") int mid) throws Exception {
         System.out.println("main = " + main);
         System.out.println("mid = " + mid);
 
         Map<String, Object> map = new HashMap<>();
-        map.put("main", main);
-        map.put("sub", mid);
+        map.put("mainCategoryId", main);
+        map.put("midCategoryId", mid);
 
         try {
             CommonResponse<List<BoardVo>> commonResponse = new CommonResponse<>(boardService.getSpecificMidAllCategoryBoard(map));

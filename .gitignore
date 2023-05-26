@@ -17,8 +17,6 @@ build/
 src/main/java/resources/application.yml
 src/main/resources/sql/mybatis-config.xml
 
-!**/src/main/java/resources/application.yml
-!**/src/main/resources/sql/mybatis-config.xml
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/

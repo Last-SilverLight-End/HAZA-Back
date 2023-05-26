@@ -26,9 +26,10 @@ public class BoardVo {
     private int userId;
 
     private String userName;
-    @NonNull
+
     private String userEmail;
 
     private String mainCategoryId;
     private String midCategoryId;
 }
+

@@ -38,14 +38,14 @@ public class BoardService {
         }
     }
     // 특정 카테고리 id 보드들 불러오기
-    public List<BoardVo> getSpecificMainCategoryBoard(int main_category_id) throws Exception{
-        System.out.println("main_category_id = " + main_category_id);
+    public List<BoardVo> getSpecificMainCategoryBoard(int mainCategoryId) throws Exception{
+        System.out.println("mainCategoryId = " + mainCategoryId);
         try {
             BoardDao boardDao = new BoardDao();
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             sqlSession = sqlSessionManager.getSqlSession();
 
-            return boardDao.getSpecificMainCategoryBoardLists(main_category_id,sqlSession);
+            return boardDao.getSpecificMainCategoryBoardLists(mainCategoryId,sqlSession);
         }
         catch (Exception e){
             e.printStackTrace();
