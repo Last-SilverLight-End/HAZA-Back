@@ -88,7 +88,9 @@ public class CategoryController {
                     .body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
             }
         }
-        //http://localhost:8080/api/categories?main=Movie
+        /** 상세 세부 정보 찾기
+         * http://localhost:8080/api/categories?mainCategoryId=1
+         * */
         else{
             try{
                 CommonResponse<List<GenreMidCategoryVo>> commonResponse = new CommonResponse<>(categoryService.getMidCategoryStatus(map));
