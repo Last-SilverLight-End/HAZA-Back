@@ -55,6 +55,7 @@ public class BoardController {
      * board list 전체 출력
      * http://localhost:8080/api/boards/all
      */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(value = "all", method = {RequestMethod.OPTIONS, RequestMethod.GET}, produces = "application/json;charset=UTF-8")
     public ResponseEntity<BasicResponse> getDrawingInform() throws Exception {
         System.out.println("this is all id");
@@ -75,6 +76,7 @@ public class BoardController {
      * 메인 카테고리 내 미드 카테고리의 모든 board list 출력
      *  http://localhost:8080/api/boards?mainCategoryId=1&midCategoryId=1
      */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(produces = "application/json;charset=UTF-8", method = RequestMethod.GET,params = {"mainCategoryId","midCategoryId"})
     public ResponseEntity<BasicResponse> getSpecificMidAllInform(@RequestParam("mainCategoryId") int main,
                                                                  @RequestParam("midCategoryId") int mid) throws Exception {

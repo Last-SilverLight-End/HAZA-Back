@@ -17,16 +17,16 @@
 
     </select>
 
-    <select id="getMainCategoryLists" resultMap="MainCategoryMap" parameterType="map" >
+    <select id="getMainCategoryLists" resultMap="MainCategoryMap" parameterType="HashMap" >
         select MAIN_CATE_NAME, B_MAIN_CATE_ID
         from TB_BOARD_MAINCATEGORY
         where  MAIN_CATE_NAME = #{main} Group by B_MAIN_CATE_ID
     </select>
 
-    <select id="getMidCategoryLists" resultMap="MidCategoryMap" parameterType="map">
+    <select id="getMidCategoryLists" resultMap="MidCategoryMap" parameterType="HashMap">
         select b.B_MAIN_CATE_ID,a.B_MID_CATE_ID,a.MID_CATE_NAME
         from  TB_BOARD_MAINCATEGORY b ,TB_BOARD_MIDCATEGORY a
-        where b.MAIN_CATE_NAME = #{main} and a.MID_CATE_NAME = #{sub}
+        where b.B_MAIN_CATE_ID = #{mainCategoryId} and a.B_MID_CATE_ID = #{midCategoryId}
     </select>
 
     <resultMap id="AllMainCategoryMap" type="HAZAGroup.HAZACommunity.rest.board.model.GenreMainCategoryVo">

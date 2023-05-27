@@ -47,16 +47,13 @@ public class CategoryService {
             throw e;
         }
     }
-
     public List<GenreMainCategoryVo> getMainCategoryStatus(Map<String, Object> map) throws Exception{
 
         try{
             CategoryDao categoryDao = new CategoryDao();
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             sqlSession = sqlSessionManager.getSqlSession();
-
             return categoryDao.getMainCategoryLists(map,sqlSession);
-
         }
         catch (Exception e){
             e.printStackTrace();
@@ -68,22 +65,18 @@ public class CategoryService {
             sqlSession.close();
         }
     }
-
     public List<GenreMidCategoryVo> getMidCategoryStatus(Map<String, Object> map) throws Exception{
         try{
             CategoryDao categoryDao = new CategoryDao();
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             sqlSession = sqlSessionManager.getSqlSession();
-
             return categoryDao.getMidCategoryLists(map,sqlSession);
-
         }
         catch (Exception e){
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
         }
-
         finally {
             sqlSession.close();
         }

@@ -14,8 +14,7 @@ public class GenreMidCategoryVo {
 
     private int parentCategoryId;
 
-
-    private int name;
+    private String name;
 
 }
 
