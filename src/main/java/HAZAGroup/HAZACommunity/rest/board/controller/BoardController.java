@@ -128,6 +128,7 @@ public class BoardController {
         try {
             CommonResponse<List<BoardVo>> commonResponse = new CommonResponse<>(boardService.getSpecificStatus(id));
             commonResponse.setStatus(200);
+
             return ResponseEntity.ok().body(commonResponse);
         }
         catch (Exception e) {

@@ -31,6 +31,7 @@ public class CategoryService {
             logger.error(e.getMessage());
             throw e;
         }
+
     }
 
     public List<GenreMidCategoryVo> getAllMidCategory() throws Exception {
@@ -46,6 +47,7 @@ public class CategoryService {
             logger.error(e.getMessage());
             throw e;
         }
+
     }
     public List<GenreMainCategoryVo> getMainCategoryStatus(Map<String, Object> map) throws Exception{
 
@@ -61,9 +63,7 @@ public class CategoryService {
             throw e;
         }
 
-        finally {
-            sqlSession.close();
-        }
+
     }
     public List<GenreMidCategoryVo> getMidCategoryStatus(Map<String, Object> map) throws Exception{
         try{
@@ -77,8 +77,6 @@ public class CategoryService {
             logger.error(e.getMessage());
             throw e;
         }
-        finally {
-            sqlSession.close();
-        }
+
     }
 }

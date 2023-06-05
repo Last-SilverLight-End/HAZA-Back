@@ -31,6 +31,7 @@ public class CategoryDao {
     }
     // MainCategoryBoard 조회
     public List<GenreMainCategoryVo> getMainCategoryLists(Map<String, Object> map, SqlSession sqlSession) throws Exception {
+        System.out.println("여기는 this is GetMainCategoryLists");
         System.out.println(map);
         List<GenreMainCategoryVo> MainCategoryLists = sqlSession.selectList("category.getMainCategoryLists", map);
         System.out.println("MainCategoryLists = " + MainCategoryLists);
@@ -38,6 +39,7 @@ public class CategoryDao {
     }
     // MidCategoryBoard 조회
     public List<GenreMidCategoryVo> getMidCategoryLists(Map<String, Object> map,SqlSession sqlSession) throws Exception {
+        System.out.println("이곳은 this is GetMainCategoryLists");
         System.out.println(map);
         List<GenreMidCategoryVo> MidCategoryLists = sqlSession.selectList("category.getMidCategoryLists", map);
         System.out.println("MidCategoryLists = " + MidCategoryLists);

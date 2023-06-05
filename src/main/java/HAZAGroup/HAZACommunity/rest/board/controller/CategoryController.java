@@ -35,6 +35,7 @@ public class CategoryController {
         try {
             CommonResponse<List<GenreMainCategoryVo>> commonResponse = new CommonResponse<>(categoryService.getAllMainCategory());
             commonResponse.setStatus(200);
+            System.out.println("commonResponse Allmain = " + commonResponse +" ");
             return ResponseEntity.ok().body(commonResponse);
         }
         catch (Exception e) {
@@ -52,6 +53,7 @@ public class CategoryController {
         try {
             CommonResponse<List<GenreMidCategoryVo>> commonResponse = new CommonResponse<>(categoryService.getAllMidCategory());
             commonResponse.setStatus(200);
+            System.out.println("commonResponse Allmid = " + commonResponse +" ");
             return ResponseEntity.ok().body(commonResponse);
         }
         catch (Exception e) {
@@ -81,9 +83,11 @@ public class CategoryController {
             try {
                 commonResponse = new CommonResponse<>(categoryService.getMainCategoryStatus(map));
                 commonResponse.setStatus(200);
+                System.out.println("commonResponse MainCategoryId = " + commonResponse +" "+mainCategoryId);
                 return ResponseEntity.ok().body(commonResponse);
             }
             catch (Exception e) {
+                System.out.println("e 1 = " + e);
                 return ResponseEntity.internalServerError()
                     .body(new ErrorResponse("조회 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
             }
@@ -95,10 +99,12 @@ public class CategoryController {
             try{
                 CommonResponse<List<GenreMidCategoryVo>> commonResponse = new CommonResponse<>(categoryService.getMidCategoryStatus(map));
                 commonResponse.setStatus(200);
+                System.out.println("commonResponse mainCategoryId midCategoryId= " + commonResponse +" "+mainCategoryId+" "+midCategoryId);
                 return ResponseEntity.ok().body(commonResponse);
             }
 
             catch (Exception e){
+                System.out.println("e 2 = " + e);
                 return ResponseEntity.internalServerError()
                     .body(new ErrorResponse("조회 실패",HttpStatus.INTERNAL_SERVER_ERROR.value()));
             }
