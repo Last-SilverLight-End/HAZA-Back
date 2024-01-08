@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="category">
 
+<mapper namespace="category">
     <select id="getAllMainCategoryLists" resultMap="AllMainCategoryMap">
     select TB_BOARD_MAINCATEGORY.MAIN_CATE_NAME AS MAIN_CATE_NAME,
            TB_BOARD_MAINCATEGORY.B_MAIN_CATE_ID AS B_MAIN_CATE_ID

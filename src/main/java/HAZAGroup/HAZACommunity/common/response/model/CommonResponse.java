@@ -22,10 +22,13 @@ public class CommonResponse<T> extends BasicResponse {
         } else if (data instanceof List) {
             this.count = ((List<?>)data).size();
         } else if (data instanceof Integer) {
-            int toInt = (int) data;
-            this.count = toInt;
+            this.count = (int) data;
         } else {
             this.count = 1;
         }
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

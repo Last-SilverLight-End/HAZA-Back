@@ -71,6 +71,43 @@ public class BoardController {
         }
     }
 
+    /**
+     * 메인 카테고리에 맞는 board list 출력
+     * http://localhost:8080/api/boards?mainCategoryId=3
+     */
+    @RequestMapping(produces = "application/json;charset=UTF-8", method = RequestMethod.GET, params = "mainCategoryId")
+    public ResponseEntity<BasicResponse> getSpecificMainCategory(@RequestParam("mainCategoryId") Integer mainCategoryId) throws Exception {
+        System.out.println("this is inserted mainCategoryId : " + mainCategoryId);
+        try {
+            CommonResponse<List<BoardVo>> commonResponse = new CommonResponse<>(boardService.getSpecificMainCategoryBoard(mainCategoryId));
+            commonResponse.setStatus(200);
+            return ResponseEntity.ok().body(commonResponse);
+        }
+        catch (Exception e) {
+            // 임시 예외처리 향후 Exception별로 구현 필요
+            return ResponseEntity.internalServerError()
+                    .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        }
+    }
+
+    /**
+     * 메인 카테고리에 맞는 board list 출력
+     * http://localhost:8080/api/boards?midCategoryId=3
+     */
+    /*@RequestMapping(produces = "application/json;charset=UTF-8", method = RequestMethod.GET, params = "midCategoryId")
+    public ResponseEntity<BasicResponse>getSpecificMainCategory(@RequestParam("mainCategoryId") Integer mainCategoryId) throws Exception {
+        System.out.println("this is inserted mainCategoryId : " + mainCategoryId);
+        try {
+            CommonResponse<List<BoardVo>> commonResponse = new CommonResponse<>(boardService.getSpecificMainCategoryBoard(mainCategoryId));
+            commonResponse.setStatus(200);
+            return ResponseEntity.ok().body(commonResponse);
+        }
+        catch (Exception e) {
+            // 임시 예외처리 향후 Exception별로 구현 필요
+            return ResponseEntity.internalServerError()
+                    .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        }
+    }*/
 
     /**
      * 메인 카테고리 내 미드 카테고리의 모든 board list 출력
@@ -98,24 +135,7 @@ public class BoardController {
                     .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
-    /**
-     * 메인 카테고리에 맞는 board list 출력
-     * http://localhost:8080/api/boards?mainCategoryId=3
-     */
-    @RequestMapping(produces = "application/json;charset=UTF-8", method = RequestMethod.GET, params = "mainCategoryId")
-    public ResponseEntity<BasicResponse> getSpecificMainCategory(@RequestParam("mainCategoryId") Integer mainCategoryId) throws Exception {
-        System.out.println("this is inserted mainCategoryId : " + mainCategoryId);
-        try {
-            CommonResponse<List<BoardVo>> commonResponse = new CommonResponse<>(boardService.getSpecificMainCategoryBoard(mainCategoryId));
-            commonResponse.setStatus(200);
-            return ResponseEntity.ok().body(commonResponse);
-        }
-        catch (Exception e) {
-            // 임시 예외처리 향후 Exception별로 구현 필요
-            return ResponseEntity.internalServerError()
-                    .body(new ErrorResponse("게시판 상세내용 확인 실패", HttpStatus.INTERNAL_SERVER_ERROR.value()));
-        }
-    }
+
     /**
      * http://localhost:8080/api/boards?id=3
      * 특정 id 보드 반환
