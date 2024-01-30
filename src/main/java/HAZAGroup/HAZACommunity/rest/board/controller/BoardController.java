@@ -188,7 +188,8 @@ public class BoardController {
     @PostMapping(value = "modify", produces = "application/json;charset=UTF-8")
     public String modifyInform(@RequestBody BoardVo boardVo) throws Exception {
         try {
-            System.out.println("boardVo = " + boardVo.getTitle());
+            System.out.println("boardVo = ");
+            // 가져오기
             CommonResponse<String> commonResponse = new CommonResponse<>(boardService.modifyBoard(boardVo));
             commonResponse.setStatus(200);
 

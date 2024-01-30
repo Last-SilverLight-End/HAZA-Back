@@ -5,22 +5,8 @@
 <mapper namespace="board">
     <!-- 보드 전체 리스트 불러오기 -->
     <select id="getBoardLists" resultMap="boardMap">
-        SELECT
-        TB_BOARD.BOARD_ID AS BOARD_ID
-        ,TB_BOARD.BOARD_TITLE AS BOARD_TITLE
-        ,TB_BOARD.BOARD_CONTENT AS BOARD_CONTENT
-        ,TB_BOARD.BOARD_HIT AS BOARD_HIT
-
-        ,TB_BOARD.CREATED_DATE AS CREATED_DATE
-        ,TB_BOARD.MODIFIED_DATE AS MODIFIED_DATE
-
-        ,TB_BOARD.USER_ID AS USER_ID
-        ,TB_BOARD.USER_NM AS USER_NM
-        ,TB_BOARD.USER_EMAIL AS USER_EMAIL
-
-        ,TB_BOARD.B_MAIN_CATE_ID AS B_MAIN_CATE_ID
-        ,TB_BOARD.B_MID_CATE_ID AS B_MID_CATE_ID
-        FROM TB_BOARD order by TB_BOARD.CREATED_DATE;
+        SELECT *
+        FROM HAZA_BOARD_TB order by HAZA_BOARD_TB.CREATED_DT;
     </select>
     <!-- 메인카테고리 id를 통한 특정 보드 리스트들 불러오기 -->
     <select id="getSpecificMainCategoryBoardLists" resultMap="boardSpecificMap" parameterType="int">
