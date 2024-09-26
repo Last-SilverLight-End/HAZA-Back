@@ -8,36 +8,46 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 
 public class UserService {
 
     Logger logger = LoggerFactory.getLogger(UserService.class);
+    SqlSession sqlSession = null;
 
-    public UserVo getUserSample() throws Exception {
+    // 유저 전체 리스트 불러오기
+    public List<UserVo> getAllUser() throws Exception {
+        System.out.println("userDao = " );
         try {
             UserDao userDao = new UserDao();
+            System.out.println("userDao = " + userDao);
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
-            SqlSession sqlSession = sqlSessionManager.getSqlSession();
-            return userDao.getUserList(sqlSession).get(0);
-        } catch (Exception e) {
+            sqlSession = sqlSessionManager.getSqlSession();
+
+            return  userDao.getUserList(sqlSession);
+        }
+        catch (Exception e) {
             e.printStackTrace();
             logger.error(e.getMessage());
             throw e;
         }
     }
 
-    public UserVo getUserToEmail(String userId) throws Exception {
+    public UserVo getUserToEmail(String id) throws Exception {
         try {
             UserDao userDao = new UserDao();
             SqlSessionManager sqlSessionManager = new SqlSessionManager();
             SqlSession sqlSession = sqlSessionManager.getSqlSession();
-            return userDao.getUserToEmail(sqlSession, userId);
-        } catch (Exception e) {
+            return userDao.getUserToEmail(sqlSession, id);
+        }
+        catch (Exception e) {
             e.printStackTrace();
             throw e;
-        } finally {
+        }
+        finally {
 
         }
     }
