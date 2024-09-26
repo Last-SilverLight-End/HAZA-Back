@@ -1,20 +1,21 @@
 package HAZAGroup.HAZACommunity.rest.board.model;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
+@Builder
 @Getter
 @Setter
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class GenreMidCategoryVo {
 
     @NonNull
-    private int midCategory_Id;
+    private int midCategoryId;
 
     @NonNull
-    private int parentsCategory_Id;
+    private int parentCategoryId;
 
     @NonNull
-    private String Name;
+    private String name;
 
 }

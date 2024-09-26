@@ -3,6 +3,7 @@ package HAZAGroup.HAZACommunity.common.response.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -12,12 +13,17 @@ public class CommonResponse<T> extends BasicResponse {
     private int status;
     private T data;
 
-
-
     public CommonResponse(T data) {
         this.data = data;
-        if(data instanceof List) {
+
+        System.out.println("data = " + data + " data type = " + data.getClass().getName());
+        if (data instanceof ArrayList) {
+            this.count = ((ArrayList<?>)data).size();
+        } else if (data instanceof List) {
             this.count = ((List<?>)data).size();
+        } else if (data instanceof Integer) {
+            int toInt = (int) data;
+            this.count = toInt;
         } else {
             this.count = 1;
         }

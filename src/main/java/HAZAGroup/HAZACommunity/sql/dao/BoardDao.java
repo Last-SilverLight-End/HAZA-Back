@@ -10,42 +10,35 @@ import java.util.List;
 
 @Repository
 public class BoardDao {
-
     @Autowired
     private DataSource dataSource;
     @Autowired
     private SqlSession sqlSession;
 
     // all board data
-    public List<BoardVo> getBoardLists(SqlSession sqlSession) throws Exception{
-        List<BoardVo> BoardLists = sqlSession.selectList("board.getBoardLists");
-        return BoardLists;
+    public List<BoardVo> getBoardLists(SqlSession sqlSession) throws Exception {
+        return sqlSession.selectList("board.getBoardLists");
     }
-
-    // board detail
-    public List<BoardVo> getSpecificBoardLists(int id,SqlSession sqlSession) throws Exception{
-
-        List<BoardVo> BoardSpecificLists = sqlSession.selectList("board.getSpecificBoardLists",id);
-        return BoardSpecificLists;
+    // board mainCategory id lists
+    public List<BoardVo> getSpecificMainCategoryBoardLists(int mainCategoryId, SqlSession sqlSession) throws Exception {
+        return sqlSession.selectList("board.getSpecificMainCategoryBoardLists", mainCategoryId);
     }
-
-    // modify board
-    public List<BoardVo> modifyBoardList(int id, SqlSession sqlSession) throws Exception{
-        List<BoardVo> BoardModifyList = sqlSession.selectList("board.modifyBoardList",id);
-        return BoardModifyList;
+    // board detail id
+    public List<BoardVo> getSpecificBoardLists(int id, SqlSession sqlSession) throws Exception {
+        return sqlSession.selectList("board.getSpecificBoardLists", id);
     }
-
     // delete board
-    public List<BoardVo> deleteBoardList(int id , SqlSession sqlSession) throws Exception{
-        //nt Id = id;
-        List<BoardVo> BoardDeleteList= sqlSession.selectList("board.deleteBoardList",id);
-
-        return BoardDeleteList;
+    public int getDeleteBoardLists(int id, SqlSession sqlSession) throws Exception {
+        return sqlSession.delete("board.getDeleteBoard", id);
     }
-
-    //
-
+    // modify board
+    public List<BoardVo> modifyBoardList(int id, SqlSession sqlSession) throws Exception {
+        return sqlSession.selectList("board.modifyBoardList", id);
+    }
+    // delete board
+    public String deleteBoardList(int id, SqlSession sqlSession) throws Exception {
+        return sqlSession.selectList("board.deleteBoardList", id).toString();
+    }
     // create board
-
 
 }
