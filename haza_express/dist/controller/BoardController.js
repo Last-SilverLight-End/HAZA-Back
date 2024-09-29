@@ -13,48 +13,47 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const BoardService_1 = require("../service/BoardService");
-const router = express_1.default.Router();
-const boardService = new BoardService_1.BoardService();
+const BoardService_1 = __importDefault(require("../service/BoardService"));
+const boardRouter = express_1.default.Router();
 // GET /api/boards
-router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+boardRouter.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const boardList = yield boardService.getBoardStatus();
+        const boardList = yield BoardService_1.default.getBoardStatus();
         return res.status(200).json({
             status: 200,
-            data: boardList
+            data: boardList,
         });
     }
     catch (error) {
         console.error('Error fetching board list:', error);
         return res.status(500).json({
             message: '조회 실패',
-            status: 500
+            status: 500,
         });
     }
 }));
-// GET /api/boards?id=3
-router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// GET /api/boards/specific?id=3
+boardRouter.get('/specific', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     if (!id) {
         return res.status(400).json({
             message: 'ID가 필요합니다.',
-            status: 400
+            status: 400,
         });
     }
     try {
-        const boardList = yield boardService.getSpecificStatus(Number(id));
+        const boardList = yield BoardService_1.default.getSpecificStatus(Number(id)); // 인스턴스화 없이 사용
         return res.status(200).json({
             status: 200,
-            data: boardList
+            data: boardList,
         });
     }
     catch (error) {
         console.error('Error fetching specific board info:', error);
         return res.status(500).json({
             message: '게시판 상세내용 확인 실패',
-            status: 500
+            status: 500,
         });
     }
 }));
-exports.default = router;
+exports.default = boardRouter;
