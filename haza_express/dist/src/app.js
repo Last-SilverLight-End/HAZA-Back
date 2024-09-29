@@ -4,10 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const BoardController_1 = __importDefault(require("../controller/BoardController"));
 const app = (0, express_1.default)();
-app.get('/welcome', (req, res, next) => {
-    res.send('welcome!');
-});
+app.use('/api', BoardController_1.default);
 app.listen('1234', () => {
     console.log(`
   ################################################
