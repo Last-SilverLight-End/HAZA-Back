@@ -1,4 +1,4 @@
-import { BoardData } from '../model/Board';
+import { BoardData } from "../model/Board";
 
 // 게시물 서비스 함수 정의
 const getBoardStatus = async (): Promise<BoardData[]> => {

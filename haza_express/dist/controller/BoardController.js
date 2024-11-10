@@ -16,28 +16,28 @@ const express_1 = __importDefault(require("express"));
 const BoardService_1 = __importDefault(require("../service/BoardService"));
 const boardRouter = express_1.default.Router();
 // GET /api/boards
-boardRouter.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+boardRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const boardList = yield BoardService_1.default.getBoardStatus();
+        /*const boardList: BoardData[] = await BoardServices.getBoardStatus();*/
         return res.status(200).json({
             status: 200,
-            data: boardList,
+            data: "hello",
         });
     }
     catch (error) {
-        console.error('Error fetching board list:', error);
+        console.error("Error fetching board list:", error);
         return res.status(500).json({
-            message: '조회 실패',
+            message: "조회 실패",
             status: 500,
         });
     }
 }));
 // GET /api/boards/specific?id=3
-boardRouter.get('/specific', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+boardRouter.get("/specific", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     if (!id) {
         return res.status(400).json({
-            message: 'ID가 필요합니다.',
+            message: "ID가 필요합니다.",
             status: 400,
         });
     }
@@ -49,9 +49,9 @@ boardRouter.get('/specific', (req, res) => __awaiter(void 0, void 0, void 0, fun
         });
     }
     catch (error) {
-        console.error('Error fetching specific board info:', error);
+        console.error("Error fetching specific board info:", error);
         return res.status(500).json({
-            message: '게시판 상세내용 확인 실패',
+            message: "게시판 상세내용 확인 실패",
             status: 500,
         });
     }

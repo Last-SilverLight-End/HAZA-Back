@@ -36,20 +36,20 @@ function testConnection() {
     return __awaiter(this, void 0, void 0, function* () {
         const client = yield pool.connect(); // 클라이언트 연결
         try {
-            console.log('PostgreSQL 연결 성공');
+            console.log("PostgreSQL 연결 성공");
             // 여기서 쿼리 실행 (예: 모든 게시물 조회)
-            const result = yield client.query('SELECT * FROM tb_board');
-            console.log('게시물:', result.rows);
+            const result = yield client.query("SELECT * FROM tb_board");
+            console.log("게시물:", result.rows);
         }
         catch (err) {
-            console.error('쿼리 실행 중 오류 발생:', err);
+            console.error("쿼리 실행 중 오류 발생:", err);
         }
         finally {
             client.release(); // 클라이언트 반환 (연결 종료)
-            console.log('클라이언트 연결 종료');
+            console.log("클라이언트 연결 종료");
         }
     });
 }
 // 연결 테스트 실행
-testConnection().catch((err) => console.error('연결 중 오류 발생:', err.stack));
+testConnection().catch((err) => console.error("연결 중 오류 발생:", err.stack));
 exports.default = pool;

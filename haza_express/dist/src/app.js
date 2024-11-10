@@ -11,8 +11,18 @@ const swagger_1 = __importDefault(require("./swagger")); // .js 확장자 사용
 const child_process_1 = require("child_process");
 const specs = (0, swagger_jsdoc_1.default)(swagger_1.default);
 const app = (0, express_1.default)();
-app.use('/api/board', BoardController_1.default);
-app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(specs, { explorer: true }));
+const options = {
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            title: "${SWAGGER_TITLE}",
+            version: "1.0.0",
+        },
+    },
+    apis: ["api들의 경로"],
+};
+app.use("/api/board", BoardController_1.default);
+app.use("/swagger", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(specs, { explorer: true }));
 app.listen(1234, () => {
     console.log(`
     ################################################
